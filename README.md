@@ -1,4 +1,4 @@
-# GESTION DOCUMENTAL
+# GESTION DOCUMENTAL SI2
 Laravel
 
 # Instalacion del proyecto
@@ -9,6 +9,7 @@ Laravel
 -   composer install
 -   duplicar el archivo .env example
 -   cambiar nombre a .env
+-   actualizar el nombre de la base de datos
 -   php artisan key:generate
 
 -   composer require spatie/laravel-permission
