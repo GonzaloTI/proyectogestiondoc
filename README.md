@@ -1,4 +1,4 @@
-# veterinaria
+# GESTION DOCUMENTAL
 Laravel
 
 # Instalacion del proyecto
