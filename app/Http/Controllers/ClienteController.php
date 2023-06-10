@@ -41,7 +41,7 @@ class ClienteController extends Controller
 
 
     /*Guarda los datos del cliente */
-    public function storedCliente(){
+    public function storedCliente(Request $reques){
         $this->validate(request(),['ci'=>'required',
                                                    'nombre'=>'required',
                                                    'a_paterno'=>'required',
@@ -60,6 +60,7 @@ class ClienteController extends Controller
         $bitacora = new bitacora();
         $bitacora->descripcion = 'Se agregó un cliente';
         $bitacora->user_name = auth()->user()->name;
+        $bitacora->ip = $request->ip();
         $bitacora->save();
 
         return redirect()->route('admin.listarcliente');     
@@ -67,12 +68,13 @@ class ClienteController extends Controller
 
     /*////// Elimina a un cliente //// */
 
-    public function destroyCliente($id){
+    public function destroyCliente($id, Request $reques){
         $user = cliente::find($id);
         $user->delete();
         $bitacora = new bitacora();
         $bitacora->descripcion = 'Se eliminó un cliente';
         $bitacora->user_name = auth()->user()->name;
+        $bitacora->ip = $request->ip();
         $bitacora->save();
         return redirect()->route('admin.listarcliente');
     }
@@ -101,6 +103,7 @@ class ClienteController extends Controller
         $bitacora = new bitacora();
         $bitacora->descripcion = 'Se editó los datos de un cliente';
         $bitacora->user_name = auth()->user()->name;
+        $bitacora->ip = $request->ip();
         $bitacora->save();
 
 
