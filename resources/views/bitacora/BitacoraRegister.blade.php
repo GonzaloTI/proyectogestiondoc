@@ -327,7 +327,7 @@
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
       <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-      <a href="{{route('admin.pdfbitacora')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+      <a href="{{route('reporte.generateBitacora')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
               class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
   </div>
 
@@ -366,6 +366,7 @@
                             <th>ID</th>
                             <th>Descripción</th>
                             <th>Usuario</th>
+                            <th>IP</th>
                             <th>Create_At</th>
                         </tr>
                     </thead>
@@ -377,6 +378,7 @@
                             <th>ID</th>
                             <th>Descripción</th>
                             <th>Usuario</th>
+                            <th>IP</th>
                             <th>Create_At</th>
                         </tr>
                     </tfoot>
@@ -390,6 +392,7 @@
                 <td class="py-3 px-7">{{$row->id}}</td>
                 <td class="p-3">{{$row->descripcion}}</td>
                 <td class="p-3 text-center">{{$row->user_name}}</td>
+                <td class="p-3 text-center">{{$row->ip}}</td>
                 <td class="p-3 text-center">{{$row->created_at}}</td>
 
               </tr>
