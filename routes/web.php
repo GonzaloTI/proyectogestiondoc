@@ -16,6 +16,8 @@ use App\Http\Controllers\BitacoraController;
 use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\AbogadoController;
 use App\Http\Controllers\JueceController;
+use App\Http\Controllers\DocumentoController;
+use App\Http\Controllers\ReporteController;
 
 
 Route::get('/', function () {
@@ -154,3 +156,34 @@ Route::get('/abogado',[AbogadoController::class,'index'])->middleware('auth.admi
 ////////// Rutas de Juez//////
 /////////////////////////////////// */
 Route::get('/juez',[JueceController::class,'index'])->middleware('auth.admin')->name('juece.index');
+
+
+/* Rutas de documento */
+
+Route::get('/admin/documento',[DocumentoController::class,'index'])->middleware('auth.admin')->name('documento.index');
+
+Route::get('/admin/documento/crear',[DocumentoController::class,'crearDocumento'])->middleware('auth.admin')->name('documento.crear');
+Route::post('/admin/documento/crear',[DocumentoController::class,'storedDocumento'])->middleware('auth.admin')->name('documento.store');
+
+Route::get('/admin/documento/delete/{id}',[DocumentoController::class,'destroyDocumento'])->middleware('auth.admin')->name('documento.destroy');
+
+Route::get('/admin/documento/editar/{id}',[DocumentoController::class,'editDocumento'])->middleware('auth.admin')->name('documento.edit');
+Route::post('/admin/documento/editar/{id}',[DocumentoController::class,'updateDocumento'])->middleware('auth.admin')->name('documento.update');
+
+Route::get('/admin/documento/{filename}',[DocumentoController::class,'showDocumento'])->middleware('auth.admin')->name('documento.show');
+
+
+/* Rutas de Reporte */
+// Report Generation
+Route::get('/cliente/reporte', [ReporteController::class,'generateCliente'])->middleware('auth.admin')->name('reporte.generateCliente');
+// Export Report
+Route::post('/cliente/reporte', [ReporteController::class,'exportCliente'])->middleware('auth.admin')->name('reporte.exportCliente');
+
+Route::get('/documento/reporte', [ReporteController::class,'generateDocumento'])->middleware('auth.admin')->name('reporte.generateDocumento');
+Route::post('/documento/reporte', [ReporteController::class,'exportDocumento'])->middleware('auth.admin')->name('reporte.exportDocumento');
+
+Route::get('/abogado/reporte', [ReporteController::class,'generateAbogado'])->middleware('auth.admin')->name('reporte.generateAbogado');
+Route::post('/abogado/reporte', [ReporteController::class,'exportAbogado'])->middleware('auth.admin')->name('reporte.exportAbogado');
+
+Route::get('/bitacora/reporte', [ReporteController::class,'generateBitacora'])->middleware('auth.admin')->name('reporte.generateBitacora');
+Route::post('/bitacora/reporte', [ReporteController::class,'exportBitacora'])->middleware('auth.admin')->name('reporte.exportBitacora');

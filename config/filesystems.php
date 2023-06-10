@@ -35,6 +35,13 @@ return [
             'root' => storage_path('app'),
         ],
 
+        'documents' => [
+            'driver' => 'local',
+            'root' => storage_path('app/documents'), // Update the root path as per your requirements
+            'url' => env('APP_URL') . '/storage/documents', // Update the URL path as per your requirements
+            'visibility' => 'public',
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
