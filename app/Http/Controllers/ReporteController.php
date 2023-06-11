@@ -15,6 +15,8 @@ use App\Models\personal;
 use App\Models\User;
 use App\Models\rol;
 use App\Models\expediente;
+use App\Models\apelacion;
+use App\Models\demanda;
 
 class ReporteController extends Controller
 {
@@ -485,4 +487,133 @@ class ReporteController extends Controller
         }
     }
     
+    public function generateApelacion()
+    {   
+        return view('reporte.reporteApelacion');
+    }
+
+    public function exportApelacion(Request $request)
+    {
+        $title = 'Lista de apelaciones';
+        
+        $columns = $request->input('columns', []);
+
+        $console = 'console.log(' . json_encode($columns) . ');';
+        $console = sprintf('<script>%s</script>', $console);
+        echo $console;
+
+        $criteria = $request->input('criteria', []);
+        $criteria = array_filter($criteria);
+        $fromDate = $request->input('fromDate');
+        $toDate = $request->input('toDate');
+
+        $orderBy = $request->input('order_by');
+        $sortBy = $request->input('sortby');
+        
+        $format = $request->input('format');
+
+        $meta = [
+            'Ordenado Por' => $orderBy,
+            'de forma' => $sortBy
+        ];
+    
+        if(empty($fromDate)){
+            if(empty($toDate)){
+                $queryBuilder = apelacion::where($criteria)
+                ->orderBy($orderBy, $sortBy)
+                ->get(); 
+            }else{
+                $queryBuilder = apelacion::where($criteria)->whereDate('created_at','<=',$toDate)
+                ->orderBy($orderBy, $sortBy)
+                ->get(); 
+            }
+            
+        }else{
+            if(empty($toDate)){
+                $queryBuilder = apelacion::where($criteria)->whereDate('created_at','>=',$fromDate)
+                ->orderBy($orderBy, $sortBy)
+                ->get(); 
+            }else{
+                $queryBuilder = apelacion::where($criteria)->whereBetween('created_at', [$fromDate, $toDate])
+                ->orderBy($orderBy, $sortBy)
+                ->get(); 
+            }
+        }
+        
+        if($format == 'excel'){
+            return ExcelReport::of($title, $meta, $queryBuilder, $columns)
+            ->download($title);
+        }elseif($format == 'pdf'){
+            return PdfReport::of($title, $meta, $queryBuilder, $columns)
+            ->stream(); 
+        }else{
+            return ExcelReport::of($title, $meta, $queryBuilder, $columns)
+            ->downloadHTML($title);
+        }
+    }
+    
+    public function generateDemanda()
+    {   
+        return view('reporte.reporteDemanda');
+    }
+
+    public function exportDemanda(Request $request)
+    {
+        $title = 'Lista de demandas';
+        
+        $columns = $request->input('columns', []);
+
+        $console = 'console.log(' . json_encode($columns) . ');';
+        $console = sprintf('<script>%s</script>', $console);
+        echo $console;
+
+        $criteria = $request->input('criteria', []);
+        $criteria = array_filter($criteria);
+        $fromDate = $request->input('fromDate');
+        $toDate = $request->input('toDate');
+
+        $orderBy = $request->input('order_by');
+        $sortBy = $request->input('sortby');
+        
+        $format = $request->input('format');
+
+        $meta = [
+            'Ordenado Por' => $orderBy,
+            'de forma' => $sortBy
+        ];
+    
+        if(empty($fromDate)){
+            if(empty($toDate)){
+                $queryBuilder = demanda::where($criteria)
+                ->orderBy($orderBy, $sortBy)
+                ->get(); 
+            }else{
+                $queryBuilder = demanda::where($criteria)->whereDate('created_at','<=',$toDate)
+                ->orderBy($orderBy, $sortBy)
+                ->get(); 
+            }
+            
+        }else{
+            if(empty($toDate)){
+                $queryBuilder = demanda::where($criteria)->whereDate('created_at','>=',$fromDate)
+                ->orderBy($orderBy, $sortBy)
+                ->get(); 
+            }else{
+                $queryBuilder = demanda::where($criteria)->whereBetween('created_at', [$fromDate, $toDate])
+                ->orderBy($orderBy, $sortBy)
+                ->get(); 
+            }
+        }
+        
+        if($format == 'excel'){
+            return ExcelReport::of($title, $meta, $queryBuilder, $columns)
+            ->download($title);
+        }elseif($format == 'pdf'){
+            return PdfReport::of($title, $meta, $queryBuilder, $columns)
+            ->stream(); 
+        }else{
+            return ExcelReport::of($title, $meta, $queryBuilder, $columns)
+            ->downloadHTML($title);
+        }
+    }
 }
