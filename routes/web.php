@@ -18,6 +18,8 @@ use App\Http\Controllers\AbogadoController;
 use App\Http\Controllers\JueceController;
 use App\Http\Controllers\DocumentoController;
 use App\Http\Controllers\ReporteController;
+use App\Http\Controllers\AsistenciaFamiliarController;
+use App\Http\Controllers\ExpedienteController;
 
 
 Route::get('/', function () {
@@ -76,7 +78,6 @@ Route::post('/admin/registrarUsuario/editarV1/{id}',[AdminController::class,'upd
 
 
 /*///////// Rutas Rol/////*/
-/*///////// Rutas Rol/////*/
 // LISTAR ROLES
 Route::get('/admin/roles',[RolController::class,'ListarRol'])->middleware('auth.admin')->name('admin.roles');
 // CREAR ROLES
@@ -87,11 +88,6 @@ Route::get('/admin/registrarRol/editarC/{id}',[RolController::class,'editRol'])-
 Route::post('/admin/registrarRol/editarC1/{id}',[RolController::class,'updateRol'])->middleware('auth.admin')->name('admin.updaterol');
 // ELIMINAR ROLES
 Route::get('/admin/registrarRol/deleteC/{id}',[RolController::class,'destroyRol'])->middleware('auth.admin')->name('admin.destroyroles');
-
-
-
-
-
 
 
 /*///////// Rutas del Personal/////*/
@@ -173,6 +169,45 @@ Route::post('/admin/documento/editar/{id}',[DocumentoController::class,'updateDo
 Route::get('/admin/documento/{filename}',[DocumentoController::class,'showDocumento'])->middleware('auth.admin')->name('documento.show');
 
 
+/* Rutas de expediente */
+Route::get('/admin/expediente',[ExpedienteController::class,'index'])->middleware('auth.admin')->name('expediente.index');
+
+Route::get('/admin/expediente/crear',[ExpedienteController::class,'crearExpediente'])->middleware('auth.admin')->name('expediente.crear');
+Route::post('/admin/expediente/crear',[ExpedienteController::class,'storedExpediente'])->middleware('auth.admin')->name('expediente.store');
+
+Route::get('/admin/expediente/delete/{id}',[ExpedienteController::class,'destroyExpediente'])->middleware('auth.admin')->name('expediente.destroy');
+
+Route::get('/admin/expediente/editar/{id}',[ExpedienteController::class,'editExpediente'])->middleware('auth.admin')->name('expediente.edit');
+Route::post('/admin/expediente/editar/{id}',[ExpedienteController::class,'updateExpediente'])->middleware('auth.admin')->name('expediente.update');
+
+Route::get('/admin/expediente/{filename}',[ExpedienteController::class,'showExpediente'])->middleware('auth.admin')->name('expediente.show');
+
+/* Rutas de apelacion */
+Route::get('/admin/apelacion',[ExpedienteController::class,'index'])->middleware('auth.admin')->name('apelacion.index');
+
+Route::get('/admin/apelacion/crear',[ExpedienteController::class,'crearExpediente'])->middleware('auth.admin')->name('apelacion.crear');
+Route::post('/admin/apelacion/crear',[ExpedienteController::class,'storedExpediente'])->middleware('auth.admin')->name('apelacion.store');
+
+Route::get('/admin/apelacion/delete/{id}',[ExpedienteController::class,'destroyExpediente'])->middleware('auth.admin')->name('apelacion.destroy');
+
+Route::get('/admin/apelacion/editar/{id}',[ExpedienteController::class,'editExpediente'])->middleware('auth.admin')->name('apelacion.edit');
+Route::post('/admin/apelacion/editar/{id}',[ExpedienteController::class,'updateExpediente'])->middleware('auth.admin')->name('apelacion.update');
+
+Route::get('/admin/apelacion/{filename}',[ExpedienteController::class,'showExpediente'])->middleware('auth.admin')->name('apelacion.show');
+
+/* Rutas de demanda */
+Route::get('/admin/demanda',[ExpedienteController::class,'index'])->middleware('auth.admin')->name('demanda.index');
+
+Route::get('/admin/demanda/crear',[ExpedienteController::class,'crearExpediente'])->middleware('auth.admin')->name('demanda.crear');
+Route::post('/admin/demanda/crear',[ExpedienteController::class,'storedExpediente'])->middleware('auth.admin')->name('demanda.store');
+
+Route::get('/admin/demanda/delete/{id}',[ExpedienteController::class,'destroyExpediente'])->middleware('auth.admin')->name('demanda.destroy');
+
+Route::get('/admin/demanda/editar/{id}',[ExpedienteController::class,'editExpediente'])->middleware('auth.admin')->name('demanda.edit');
+Route::post('/admin/demanda/editar/{id}',[ExpedienteController::class,'updateExpediente'])->middleware('auth.admin')->name('demanda.update');
+
+Route::get('/admin/demanda/{filename}',[ExpedienteController::class,'showExpediente'])->middleware('auth.admin')->name('demanda.show');
+
 /* Rutas de Reporte */
 // Report Generation
 Route::get('/cliente/reporte', [ReporteController::class,'generateCliente'])->middleware('auth.admin')->name('reporte.generateCliente');
@@ -187,3 +222,21 @@ Route::post('/abogado/reporte', [ReporteController::class,'exportAbogado'])->mid
 
 Route::get('/bitacora/reporte', [ReporteController::class,'generateBitacora'])->middleware('auth.admin')->name('reporte.generateBitacora');
 Route::post('/bitacora/reporte', [ReporteController::class,'exportBitacora'])->middleware('auth.admin')->name('reporte.exportBitacora');
+
+Route::get('/asistenciaF/reporte', [ReporteController::class,'generateAsistencia'])->middleware('auth.admin')->name('reporte.generateAsistencia');
+Route::post('/asistenciaF/reporte', [ReporteController::class,'exportAsistencia'])->middleware('auth.admin')->name('reporte.exportAsistencia');
+
+Route::get('/expediente/reporte', [ReporteController::class,'generateExpediente'])->middleware('auth.admin')->name('reporte.generateExpediente');
+Route::post('/expediente/reporte', [ReporteController::class,'exportExpediente'])->middleware('auth.admin')->name('reporte.exportExpediente');
+
+
+/*///////// Rutas de Asistencia Familiar/////*/
+Route::get('/admin/AsistenciaF',[AsistenciaFamiliarController::class,'index'])->middleware('auth.admin')->name('admin.listarAsistencia');
+
+Route::get('/admin/asistenciaF/crear',[AsistenciaFamiliarController::class,'createAsistencia'])->middleware('auth.admin')->name('admin.crearAsistencia');
+Route::post('/admin/asistenciaF/crear',[AsistenciaFamiliarController::class,'storedAsistencia'])->middleware('auth.admin')->name('admin.storedAsistencia');
+
+Route::get('/admin/asistenciaF/delete/{id}',[AsistenciaFamiliarController::class,'destroyAsistencia'])->middleware('auth.admin')->name('admin.destroyAsistencia');
+
+Route::get('/admin/asistenciaF/editar/{id}',[AsistenciaFamiliarController::class,'editAsistencia'])->middleware('auth.admin')->name('admin.editAsistencia');
+Route::post('/admin/asistenciaF/editar/{id}',[AsistenciaFamiliarController::class,'updateAsistencia'])->middleware('auth.admin')->name('admin.updateAsistencia');
