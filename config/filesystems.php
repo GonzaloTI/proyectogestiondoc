@@ -49,6 +49,20 @@ return [
             'visibility' => 'public',
         ],
 
+        'apelacions' => [
+            'driver' => 'local',
+            'root' => storage_path('app/apelacions'), // Update the root path as per your requirements
+            'url' => env('APP_URL') . '/storage/apelacions', // Update the URL path as per your requirements
+            'visibility' => 'public',
+        ],
+
+        'demandas' => [
+            'driver' => 'local',
+            'root' => storage_path('app/demandas'), // Update the root path as per your requirements
+            'url' => env('APP_URL') . '/storage/demandas', // Update the URL path as per your requirements
+            'visibility' => 'public',
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
