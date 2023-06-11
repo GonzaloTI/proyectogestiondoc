@@ -22,8 +22,12 @@
         <label class="col-sm-4" for="titulo">Título</label>
         </div>
         <div class="row py-1">
+        <input type="checkbox" class="btn-check form-control col-sm-2" id="caso_id" name="columns[Caso ID]" value="caso_id" checked> 
+        <label class="col-sm-4" for="caso_id">Caso ID</label>
         <input type="checkbox" class="btn-check form-control col-sm-2" id="file_path" name="columns[Nombre del archivo]" value="file_path" checked> 
         <label class="col-sm-4" for="file_path">Nombre del archivo</label>
+        </div>
+        <div class="row py-1">
         <input type="checkbox" class="btn-check form-control col-sm-2" id="created_at" name="columns[Fecha de Registro]" value="created_at" checked> 
         <label class="col-sm-4" for="created_at">Fecha de Registro</label>
         </div>
@@ -33,6 +37,7 @@
         <label for="criteria">Selección del Criterio:</label> <br>
         <input class="m-1" id ="criteria" type="text" name="criteria[id]" placeholder="ID" class="form-control">
         <input class="m-1" type="text" name="criteria[titulo]" placeholder="Título" class="form-control">
+        <input class="m-1" type="text" name="criteria[caso_id]" placeholder="Caso ID" class="form-control">
         <input class="m-1" type="text" name="criteria[file_path]" placeholder="Nombre del archivo" class="form-control">
         
     </div>
@@ -48,6 +53,7 @@
         <select name="order_by" id="order_by" class="form-control">
             <option value="id">ID</option>
             <option value="titulo">Título</option>
+            <option value="caso_id">Caso ID</option>
             <option value="file_path">Nombre del archivo</option>
             <option value="created_at">Fecha de Registro</option>
         </select>

@@ -47,6 +47,7 @@
                         <tr class="table-warning">
                             <th>ID</th>
                             <th>Título</th>
+                            <th>ID del Caso</th>
                             <th>F_Registro</th>                        
                             <th>Archivo</th>
                             <th>Actions</th>
@@ -59,6 +60,7 @@
                         <tr class="table-warning">
                             <th>ID</th>
                             <th>Título</th>
+                            <th>ID del Caso</th>
                             <th>F_Registro</th>                        
                             <th>Archivo</th>
                             <th>Actions</th>
@@ -73,6 +75,7 @@
         <tr>
                 <td class="py-3 px-7">{{$row->id}}</td>
                 <td class="p-3 text-center">{{$row->titulo}}</td>
+                <td class="p-3 text-center">{{$row->caso_id}}</td>
                 <td class="p-3 text-center">{{$row->created_at}}</td>
                 <td class="p-3 text-center">
                     <a href="{{ route('documento.show', $row->file_path )}}" target="_blank">Ver Documento</a>

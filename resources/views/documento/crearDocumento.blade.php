@@ -19,12 +19,18 @@
 <form class="mt-4" method="POST" action="{{route('documento.store')}}" enctype="multipart/form-data">
     @csrf
 
-    <input type="text" class="border border-gray-200 rounded-md bg-gray-200 w-full text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" placeholder="titulo" id="titulo" name="titulo">
+    <input type="text" class="border border-gray-200 rounded-md bg-gray-200 w-full text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" placeholder="Título" id="titulo" name="titulo">
 
     @error('titulo')
      <p class="border border-red-500 rounded-md bg-red-100 w-full text-red-600 p-2 my-2">{{ $message }}</p>
     @enderror
     
+    <input type="text" class="border border-gray-200 rounded-md bg-gray-200 w-full text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" placeholder="Id del caso" id="caso_id" name="caso_id">
+
+    @error('caso_id')
+     <p class="border border-red-500 rounded-md bg-red-100 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+    @enderror
+
     <input type="file" class="border border-gray-200 rounded-md bg-gray-200 w-full text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" placeholder="Archivo" id="file" name="file">
 
     @error('file')

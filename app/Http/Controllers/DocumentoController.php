@@ -28,6 +28,7 @@ class DocumentoController extends Controller
     {
         $request->validate([
             'titulo' => 'required',
+            'caso_id' => 'required',
             'file' => 'required|mimes:pdf,doc,docx|max:2048', // Adjust allowed file types and maximum file size as needed
         ]);
 
@@ -39,6 +40,7 @@ class DocumentoController extends Controller
             documento::create([
                 'titulo' => $request->titulo,
                 'file_path' => $filePath,
+                'caso_id' => $request->caso_id,
             ]);
 
             $bitacora = new bitacora();
@@ -95,6 +97,7 @@ class DocumentoController extends Controller
        
         $user = documento::find($id);
         $user->titulo = $request->titulo;
+        $user->caso_id = $request->caso_id;
 
         if ($request->hasFile('file') && $request->file('file')->isValid()) {
             $file = $request->file('file');

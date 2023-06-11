@@ -17,6 +17,7 @@ class CreateDocumentosTable extends Migration
             $table->id();
             $table->string('titulo',80);
             $table->string('file_path',70);
+            $table->integer('caso_id');
             $table->timestamps();
         });
     }

@@ -10,6 +10,8 @@ class documento extends Model
     use HasFactory;
     protected $fillable = [
         'titulo',
+        'caso_id',
         'file_path',
+        
     ];
 }
