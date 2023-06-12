@@ -40,12 +40,14 @@ class SessionsController extends Controller{
     }
 
     public function destroy(Request $request){
-        auth()->logout();
+    
         $bitacora = new bitacora();
         $bitacora->descripcion = 'Salió un usuario';
         $bitacora->user_name = auth()->user()->name;
         $bitacora->ip = $request->ip();
         $bitacora->save();
+
+        auth()->logout();
         return redirect()->to('/');
     }
 
