@@ -10,6 +10,11 @@ use App\Models\documento;
 use App\Models\bitacora;
 use Illuminate\Support\Facades\Storage;
 
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SessionsController;
+
+use App\Models\User;
+
 class DocumentoController extends Controller
 {
     public function index()
@@ -18,6 +23,7 @@ class DocumentoController extends Controller
 
         return view('documento.DocumentoRegister', compact('user'));
     }
+
 
     public function crearDocumento()
     {
