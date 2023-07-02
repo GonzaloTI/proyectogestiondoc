@@ -113,7 +113,26 @@
                             </div>
                         </li>
                 
+            <div class="sidebar-heading">
+                Mod. CASOS
+            </div>
 
+                        <!-- Nav Item - Pages Collapse Menu -->
+                        <li class="nav-item">
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
+                                aria-expanded="true" aria-controls="collapseThree">
+                                <i class="fas fa-fw fa-cog"></i>
+                                <span>CASOS</span>
+                            </a>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
+                                <div class="bg-white py-2 collapse-inner rounded">
+                                    <h6 class="collapse-header">Components:</h6>
+                                    
+                                    <a class="collapse-item" href="{{route('admin.listarAsistencia')}}">Asistencia Familiar</a>
+                                    <a class="collapse-item" href="{{route('admin.listarDivorcio')}}">Divorcio</a>
+                                </div>
+                            </div>
+                        </li>
               
                   
    

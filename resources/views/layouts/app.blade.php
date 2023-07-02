@@ -46,7 +46,7 @@
                     <div class="sidebar-brand-icon rotate-n-15">
                         <i class="fas fa-laugh-wink"></i>
                     </div>
-                    <div class="sidebar-brand-text mx-3">  Juridico <sup>2</sup></div>
+                    <div class="sidebar-brand-text mx-3">  Juridico</div>
                 </a>
     
                 <!-- Divider -->
@@ -82,7 +82,8 @@
                                <a class="collapse-item" href="{{route('admin.listarpersonal')}}">Personal</a>
                                <a class="collapse-item" href="{{route('admin.listarabogado')}}">Abogado</a>
                                 <a class="collapse-item" href="{{route('admin.listarjuece')}}">Jueces</a>
-                                <a class="collapse-item" href="{{route('admin.listarcliente')}}"> clientes</a> 
+                                <a class="collapse-item" href="{{route('admin.listarcliente')}}"> Clientes</a> 
+                                <a class="collapse-item" href="{{route('admin.listarvista')}}"> Demandantes/Demandados</a> 
                                 <a class="collapse-item" href="{{route('admin.listarbitacora')}}">Bitacora</a>
                            </div>
                        </div>
@@ -112,11 +113,28 @@
                             </div>
                         </li>
 
+            <div class="sidebar-heading">
+                Mod. CASOS
+            </div>
+
+                        <!-- Nav Item - Pages Collapse Menu -->
+                        <li class="nav-item">
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
+                                aria-expanded="true" aria-controls="collapseThree">
+                                <i class="fas fa-fw fa-cog"></i>
+                                <span>CASOS</span>
+                            </a>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
+                                <div class="bg-white py-2 collapse-inner rounded">
+                                    <h6 class="collapse-header">Components:</h6>
+                                    
+                                    <a class="collapse-item" href="{{route('admin.listarAsistencia')}}">Asistencia familiar</a>
+                                    <a class="collapse-item" href="{{route('admin.listarDivorcio')}}">Divorcio</a>
+                                </div>
+                            </div>
+                        </li>
+
                 @endauth
-                   
-   
-                     
-    
     
                 <!-- Divider -->
                 <hr class="sidebar-divider d-none d-md-block">
