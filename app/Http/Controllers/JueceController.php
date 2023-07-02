@@ -35,7 +35,7 @@ class JueceController extends Controller
 
 
     /*Guarda los datos del juez */
-    public function storedJuece(){
+    public function storedJuece(Request $request){
         $this->validate(request(),['ci'=>'required',
                                                    'nombre'=>'required',
                                                    'a_paterno'=>'required',
@@ -55,6 +55,7 @@ class JueceController extends Controller
         $bitacora = new bitacora();
         $bitacora->descripcion = 'Se agregó juez';
         $bitacora->user_name = auth()->user()->name;
+        $bitacora->ip = $request->ip();
         $bitacora->save();
 
         return redirect()->route('admin.listarjuece');     
@@ -62,13 +63,14 @@ class JueceController extends Controller
 
     /*////// Elimina a un juez //// */
 
-    public function destroyJuece($id){
+    public function destroyJuece(Request $request, $id){
         $user = juece::find($id);
         $user->delete();
 
         $bitacora = new bitacora();
         $bitacora->descripcion = 'Se eliminó juez';
         $bitacora->user_name = auth()->user()->name;
+        $bitacora->ip = $request->ip();
         $bitacora->save();
 
         return redirect()->route('admin.listarjuece');
@@ -99,6 +101,7 @@ class JueceController extends Controller
         $bitacora = new bitacora();
         $bitacora->descripcion = 'Se editó los datos del juez';
         $bitacora->user_name = auth()->user()->name;
+        $bitacora->ip = $request->ip();
         $bitacora->save();
 
         return redirect()->route('admin.listarjuece');

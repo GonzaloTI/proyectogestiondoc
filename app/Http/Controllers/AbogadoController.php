@@ -33,15 +33,15 @@ class AbogadoController extends Controller
 
 
     /*Guarda los datos del Abogado */
-    public function storedAbogado(){
+    public function storedAbogado(Request $request){
         $this->validate(request(),['ci'=>'required',
-                                                   'nombre'=>'required',
-                                                   'a_paterno'=>'required',
-                                                   'a_materno'=>'required',
-                                                   'sexo'=>'required',
-                                                   'telefono'=>'required',
-                                                   'direccion'=>'required',
-                                                    'user_id']);
+                                    'nombre'=>'required',
+                                    'a_paterno'=>'required',
+                                    'a_materno'=>'required',
+                                    'sexo'=>'required',
+                                    'telefono'=>'required',
+                                    'direccion'=>'required',
+                                    'user_id']);
 
 
         $user = abogado::create(request(['ci','nombre','a_paterno','a_materno','sexo','telefono','direccion','user_id']));
@@ -53,6 +53,7 @@ class AbogadoController extends Controller
         $bitacora = new bitacora();
         $bitacora->descripcion = 'Se agregó abogado';
         $bitacora->user_name = auth()->user()->name;
+        $bitacora->ip = $request->ip();
         $bitacora->save();
 
         return redirect()->route('admin.listarabogado');     
@@ -60,13 +61,14 @@ class AbogadoController extends Controller
 
     /*////// Elimina a un Abogado //// */
 
-    public function destroyAbogado($id){
+    public function destroyAbogado(Request $request, $id){
         $user = abogado::find($id);
         $user->delete();
 
         $bitacora = new bitacora();
         $bitacora->descripcion = 'Se eliminó Abogado';
         $bitacora->user_name = auth()->user()->name;
+        $bitacora->ip = $request->ip();
         $bitacora->save();
 
         return redirect()->route('admin.listarabogado');
@@ -97,6 +99,7 @@ class AbogadoController extends Controller
         $bitacora = new bitacora();
         $bitacora->descripcion = 'Se editó los datos del abogado';
         $bitacora->user_name = auth()->user()->name;
+        $bitacora->ip = $request->ip();
         $bitacora->save();
 
         return redirect()->route('admin.listarabogado');

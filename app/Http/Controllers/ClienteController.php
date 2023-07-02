@@ -41,7 +41,7 @@ class ClienteController extends Controller
 
 
     /*Guarda los datos del cliente */
-    public function storedCliente(Request $reques){
+    public function storedCliente(Request $request){
         $this->validate(request(),['ci'=>'required',
                                                    'nombre'=>'required',
                                                    'a_paterno'=>'required',
@@ -68,7 +68,7 @@ class ClienteController extends Controller
 
     /*////// Elimina a un cliente //// */
 
-    public function destroyCliente($id, Request $reques){
+    public function destroyCliente($id, Request $request){
         $user = cliente::find($id);
         $user->delete();
         $bitacora = new bitacora();
