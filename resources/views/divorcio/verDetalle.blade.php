@@ -33,20 +33,18 @@
                             <th>ID</th>
                             <th>Caso</th>
                             <th>Rol</th>
-                            <th>Partes ID</th>
-                            <th>Abogado ID</th>
+                            <th>Nombre</th>
+                            <th>Abogado</th>
                         </tr>
                     </thead>
-
-
 
                     <tfoot>
                         <tr class="table-warning">
                             <th>ID</th>
                             <th>Caso</th>
                             <th>Rol</th>
-                            <th>Partes ID</th>
-                            <th>Abogado ID</th>
+                            <th>Nombre</th>
+                            <th>Abogado</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -56,12 +54,12 @@
         @foreach($user as $row)
 
         <tr>
-                <td class="py-3 px-7">{{$row->id}}</td>
-                <td class="p-3 text-center">{{$row->caso_id}}</td>
-                <td class="p-3 text-center">{{$row->rol}}</td>
-                <td class="p-3 text-center">{{$row->vista_id}}</td>
-                <td class="p-3 text-center">{{$row->abogado_id}}</td>
-            </tr>
+            <td class="py-3 px-7">{{$row->id}}</td>
+            <td class="p-3 text-center">{{$row->caso_id}}</td>
+            <td class="p-3 text-center">{{$row->rol}}</td>
+            <td class="p-3 text-center">{{$row->vista->nombre}}  {{$row->vista->a_paterno}}  {{$row->vista->a_materno}}</td>
+            <td class="p-3 text-center">{{$row->abogado->nombre}}  {{$row->abogado->a_paterno}}  {{$row->abogado->a_materno}}</td>
+        </tr>
 
       @endforeach
 

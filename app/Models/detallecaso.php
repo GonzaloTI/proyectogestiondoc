@@ -16,11 +16,10 @@ class detallecaso extends Model
     ];
 
     public function vista(){
-        //relacion uno a uno
-        return $this->hasOne('App\Models\vista');
+        return $this->belongsTo(vista::class);
     }
-    public function abogado(){
-        //relacion uno a uno
-        return $this->hasOne('App\Models\abogado');
+    public function abogado()
+    {
+        return $this->belongsTo(abogado::class);
     }
 }
