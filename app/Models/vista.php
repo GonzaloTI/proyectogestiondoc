@@ -16,8 +16,8 @@ class vista extends Model
         'sexo',
         'telefono',
         'direccion',
-        'estado',
-        'user_id'
+        'estado'
+       
     ];
     
     public function user(){

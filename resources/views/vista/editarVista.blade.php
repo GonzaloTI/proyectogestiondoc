@@ -10,7 +10,7 @@
 <div class="block mx-auto my-12 p-8 bg-white w-1/3 borderr border-gray-200 rounded-lg shadow-lg">
 <h1 class="text-3xl text-center font-bold">Editar {{$user->id}}</h1>
 
-<form action="{{route('admin.updatevista',$user->id)}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('admin.updateVista',$user->id)}}" method="POST" enctype="multipart/form-data">
     @csrf
     <h1 class="h3 mb-0 text-gray-800">CI</h1>
     <input type="text" class="border border-gray-200 rounded-md bg-gray-200 w-full text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" placeholder="ci" id="ci" name="ci" value="{{$user->ci}}">
@@ -40,9 +40,7 @@
     <h1 class="h3 mb-0 text-gray-800">Estado  h  o  d </h1>
     <input type="text" class="border border-gray-200 rounded-md bg-gray-200 w-full text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" placeholder="estado h o d" id="estado" name="estado" value="{{$user->estado}}">
 
-    <h1 class="h3 mb-0 text-gray-800">User Id</h1>
-    <input type="text" class="border border-gray-200 rounded-md bg-gray-200 w-full text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" placeholder="user_id" id="user_id" name="user_id" value="{{$user->user_id}}">
- 
+
     <button type="submit" class="rounded-md bg-blue-500 w-full text-lg text-white font-semibold p-2 my-3 hover:bg-blue-600">Editar</button>
 
 </form>

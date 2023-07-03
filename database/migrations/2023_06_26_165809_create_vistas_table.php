@@ -24,9 +24,6 @@ class CreateVistasTable extends Migration
             $table->string('direccion',80);
             $table->string('estado',1)->nullable();
             
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->nullable();
-
             $table->timestamps();
         });
     }

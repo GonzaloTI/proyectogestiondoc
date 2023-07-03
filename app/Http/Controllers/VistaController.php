@@ -25,17 +25,17 @@ class VistaController extends Controller
                                     'a_materno'=>'required',
                                     'sexo'=>'required',
                                     'telefono'=>'required',
-                                    'direccion'=>'required',
-                                    'user_id']);
+                                    'direccion'=>'required'
+                                    ]);
 
 
-        $user = vista::create(request(['ci','nombre','a_paterno','a_materno','sexo','telefono','direccion','user_id']));
+        $user = vista::create(request(['ci','nombre','a_paterno','a_materno','sexo','telefono','direccion']));
         $user->estado='h';     
         
         $user->save();
 
         $bitacora = new bitacora();
-        $bitacora->descripcion = 'Se agregó una vista';
+        $bitacora->descripcion = 'Se agregó un Demandate o demandado';
         $bitacora->user_name = auth()->user()->name;
         $bitacora->ip = $request->ip();
         $bitacora->save();
@@ -48,7 +48,7 @@ class VistaController extends Controller
         $user->delete();
 
         $bitacora = new bitacora();
-        $bitacora->descripcion = 'Se eliminó una vista';
+        $bitacora->descripcion = 'Se eliminó un Demandate o demandado';
         $bitacora->user_name = auth()->user()->name;
         $bitacora->ip = $request->ip();
         $bitacora->save();
@@ -72,12 +72,12 @@ class VistaController extends Controller
         $user->telefono = $request->telefono;
         $user->direccion = $request->direccion;
         $user->estado = $request->estado;
-        $user->user_id = $request->user_id;
+       
 
         $user->save();
 
         $bitacora = new bitacora();
-        $bitacora->descripcion = 'Se editó los datos de vista';
+        $bitacora->descripcion = 'Se editó los datos de Demandate o demandado';
         $bitacora->user_name = auth()->user()->name;
         $bitacora->ip = $request->ip();
         $bitacora->save();

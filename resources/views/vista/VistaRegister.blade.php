@@ -54,7 +54,7 @@
                             <th>Telefono</th>
                             <th>Direccion</th>
                             <th>Estado</th>
-                            <th>User_Id</th>
+                          
                             <th>F_Registro</th>
                             <th>Actions</th>
                         </tr>
@@ -71,7 +71,7 @@
                             <th>Telefono</th>
                             <th>Direccion</th>
                             <th>Estado</th>
-                            <th>User_Id</th>
+                           
                             <th>F_Registro</th>
                             <th>Actions</th>
                         </tr>
@@ -92,7 +92,7 @@
                 <td class="p-3 text-center">{{$row->telefono}}</td>
                 <td class="p-3 text-center">{{$row->direccion}}</td>
                 <td class="p-3 text-center">{{$row->estado}}</td>
-                <td class="p-3 text-center">{{$row->user_id}}</td>
+               
                 <td class="p-3 text-center">{{$row->created_at}}</td>
 
                 <td class="p-3">
