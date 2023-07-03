@@ -47,7 +47,7 @@ Route::middleware('auth:sanctum')->group(function ()
 Route::get('/admin/usuario/delete/{id}',[ApiController::class,'destroyUsuario'])->name('admin.destroyUsuarioapi');
 Route::post('/admin/usuario/update/{id}',[ApiController::class,'updateUsuario'])->name('admin.updateUsuarioapi');
 
-Route::get('/admin/usersall',[ApiController::class,'usersall'])->name('useralls2.index');
+Route::get('/admin/usersall',[ApiController::class,'usersall'])->name('useralls222.index');
 
 
 //##################################################################################################
