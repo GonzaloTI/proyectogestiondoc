@@ -398,6 +398,15 @@ public function Demandasall(){
 ],200);
 }
 
+//bitacoras all
+
+public function Bitacorasall(){
+  $user = bitacora::all();
+  return response([ 
+    'bitacora'=>$user
+],200);
+}
+
 
 }
 

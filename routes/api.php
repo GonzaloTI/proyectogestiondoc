@@ -87,5 +87,5 @@ Route::get('/admin/cliente/delete/{id}',[ApiController::class,'destroyCliente'])
 //##################################################################################################
 //##################################################################################################
 
-
+Route::get('/admin/Bitacorasall',[ApiController::class,'Bitacorasall'])->name('bitacorassall.index');
 Route::get('/admin/Documentosall',[ApiController::class,'Documentosall'])->name('Documentosall.index');
