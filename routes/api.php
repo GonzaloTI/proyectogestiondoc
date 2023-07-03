@@ -41,13 +41,13 @@ Route::middleware('auth:sanctum')->group(function ()
 {
     Route::post('/admin/logoutsactum',[ApiController::class,'logout'])->name('logoutsactum.index');
     Route::get('/admin/usersactum',[ApiController::class,'user'])->name('usersactum.index');
-    Route::get('/admin/usersall22',[ApiController::class,'usersall'])->name('useralls.index');
+    Route::get('/admin/usersall22',[ApiController::class,'usersall'])->name('useralls1.index');
 });
 
 Route::get('/admin/usuario/delete/{id}',[ApiController::class,'destroyUsuario'])->name('admin.destroyUsuarioapi');
 Route::post('/admin/usuario/update/{id}',[ApiController::class,'updateUsuario'])->name('admin.updateUsuarioapi');
 
-Route::get('/admin/usersall',[ApiController::class,'usersall'])->name('useralls.index');
+Route::get('/admin/usersall',[ApiController::class,'usersall'])->name('useralls2.index');
 
 
 //##################################################################################################
