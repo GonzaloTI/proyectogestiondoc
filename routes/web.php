@@ -16,6 +16,14 @@ use App\Http\Controllers\BitacoraController;
 use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\AbogadoController;
 use App\Http\Controllers\JueceController;
+use App\Http\Controllers\DocumentoController;
+use App\Http\Controllers\ReporteController;
+use App\Http\Controllers\ExpedienteController;
+use App\Http\Controllers\ApelacionController;
+use App\Http\Controllers\DemandaController;
+use App\Http\Controllers\VistaController;
+use App\Http\Controllers\AsistenciaController;
+use App\Http\Controllers\DivorcioController;
 
 
 Route::get('/', function () {
@@ -74,7 +82,6 @@ Route::post('/admin/registrarUsuario/editarV1/{id}',[AdminController::class,'upd
 
 
 /*///////// Rutas Rol/////*/
-/*///////// Rutas Rol/////*/
 // LISTAR ROLES
 Route::get('/admin/roles',[RolController::class,'ListarRol'])->middleware('auth.admin')->name('admin.roles');
 // CREAR ROLES
@@ -85,11 +92,6 @@ Route::get('/admin/registrarRol/editarC/{id}',[RolController::class,'editRol'])-
 Route::post('/admin/registrarRol/editarC1/{id}',[RolController::class,'updateRol'])->middleware('auth.admin')->name('admin.updaterol');
 // ELIMINAR ROLES
 Route::get('/admin/registrarRol/deleteC/{id}',[RolController::class,'destroyRol'])->middleware('auth.admin')->name('admin.destroyroles');
-
-
-
-
-
 
 
 /*///////// Rutas del Personal/////*/
@@ -154,3 +156,120 @@ Route::get('/abogado',[AbogadoController::class,'index'])->middleware('auth.admi
 ////////// Rutas de Juez//////
 /////////////////////////////////// */
 Route::get('/juez',[JueceController::class,'index'])->middleware('auth.admin')->name('juece.index');
+
+
+/* Rutas de documento */
+
+Route::get('/admin/documento',[DocumentoController::class,'index'])->middleware('auth.admin')->name('documento.index');
+
+Route::get('/admin/documento/crear',[DocumentoController::class,'crearDocumento'])->middleware('auth.admin')->name('documento.crear');
+Route::post('/admin/documento/crear',[DocumentoController::class,'storedDocumento'])->middleware('auth.admin')->name('documento.store');
+
+Route::get('/admin/documento/delete/{id}',[DocumentoController::class,'destroyDocumento'])->middleware('auth.admin')->name('documento.destroy');
+
+Route::get('/admin/documento/editar/{id}',[DocumentoController::class,'editDocumento'])->middleware('auth.admin')->name('documento.edit');
+Route::post('/admin/documento/editar/{id}',[DocumentoController::class,'updateDocumento'])->middleware('auth.admin')->name('documento.update');
+
+Route::get('/admin/documento/{filename}',[DocumentoController::class,'showDocumento'])->middleware('auth.admin')->name('documento.show');
+
+
+/* Rutas de expediente */
+Route::get('/admin/expediente',[ExpedienteController::class,'index'])->middleware('auth.admin')->name('expediente.index');
+
+Route::get('/admin/expediente/crear',[ExpedienteController::class,'crearExpediente'])->middleware('auth.admin')->name('expediente.crear');
+Route::post('/admin/expediente/crear',[ExpedienteController::class,'storedExpediente'])->middleware('auth.admin')->name('expediente.store');
+
+Route::get('/admin/expediente/delete/{id}',[ExpedienteController::class,'destroyExpediente'])->middleware('auth.admin')->name('expediente.destroy');
+
+Route::get('/admin/expediente/editar/{id}',[ExpedienteController::class,'editExpediente'])->middleware('auth.admin')->name('expediente.edit');
+Route::post('/admin/expediente/editar/{id}',[ExpedienteController::class,'updateExpediente'])->middleware('auth.admin')->name('expediente.update');
+
+Route::get('/admin/expediente/{filename}',[ExpedienteController::class,'showExpediente'])->middleware('auth.admin')->name('expediente.show');
+
+/* Rutas de apelacion */
+Route::get('/admin/apelacion',[ApelacionController::class,'index'])->middleware('auth.admin')->name('apelacion.index');
+
+Route::get('/admin/apelacion/crear',[ApelacionController::class,'crearApelacion'])->middleware('auth.admin')->name('apelacion.crear');
+Route::post('/admin/apelacion/crear',[ApelacionController::class,'storedApelacion'])->middleware('auth.admin')->name('apelacion.store');
+
+Route::get('/admin/apelacion/delete/{id}',[ApelacionController::class,'destroyApelacion'])->middleware('auth.admin')->name('apelacion.destroy');
+
+Route::get('/admin/apelacion/editar/{id}',[ApelacionController::class,'editApelacion'])->middleware('auth.admin')->name('apelacion.edit');
+Route::post('/admin/apelacion/editar/{id}',[ApelacionController::class,'updateApelacion'])->middleware('auth.admin')->name('apelacion.update');
+
+Route::get('/admin/apelacion/{filename}',[ApelacionController::class,'showApelacion'])->middleware('auth.admin')->name('apelacion.show');
+
+/* Rutas de demanda */
+Route::get('/admin/demanda',[DemandaController::class,'index'])->middleware('auth.admin')->name('demanda.index');
+
+Route::get('/admin/demanda/crear',[DemandaController::class,'crearDemanda'])->middleware('auth.admin')->name('demanda.crear');
+Route::post('/admin/demanda/crear',[DemandaController::class,'storedDemanda'])->middleware('auth.admin')->name('demanda.store');
+
+Route::get('/admin/demanda/delete/{id}',[DemandaController::class,'destroyDemanda'])->middleware('auth.admin')->name('demanda.destroy');
+
+Route::get('/admin/demanda/editar/{id}',[DemandaController::class,'editDemanda'])->middleware('auth.admin')->name('demanda.edit');
+Route::post('/admin/demanda/editar/{id}',[DemandaController::class,'updateDemanda'])->middleware('auth.admin')->name('demanda.update');
+
+Route::get('/admin/demanda/{filename}',[DemandaController::class,'showDemanda'])->middleware('auth.admin')->name('demanda.show');
+
+/* Rutas de Reporte */
+// Report Generation
+Route::get('/cliente/reporte', [ReporteController::class,'generateCliente'])->middleware('auth.admin')->name('reporte.generateCliente');
+// Export Report
+Route::post('/cliente/reporte', [ReporteController::class,'exportCliente'])->middleware('auth.admin')->name('reporte.exportCliente');
+
+Route::get('/documento/reporte', [ReporteController::class,'generateDocumento'])->middleware('auth.admin')->name('reporte.generateDocumento');
+Route::post('/documento/reporte', [ReporteController::class,'exportDocumento'])->middleware('auth.admin')->name('reporte.exportDocumento');
+
+Route::get('/abogado/reporte', [ReporteController::class,'generateAbogado'])->middleware('auth.admin')->name('reporte.generateAbogado');
+Route::post('/abogado/reporte', [ReporteController::class,'exportAbogado'])->middleware('auth.admin')->name('reporte.exportAbogado');
+
+Route::get('/bitacora/reporte', [ReporteController::class,'generateBitacora'])->middleware('auth.admin')->name('reporte.generateBitacora');
+Route::post('/bitacora/reporte', [ReporteController::class,'exportBitacora'])->middleware('auth.admin')->name('reporte.exportBitacora');
+
+Route::get('/asistenciaF/reporte', [ReporteController::class,'generateAsistencia'])->middleware('auth.admin')->name('reporte.generateAsistencia');
+Route::post('/asistenciaF/reporte', [ReporteController::class,'exportAsistencia'])->middleware('auth.admin')->name('reporte.exportAsistencia');
+Route::get('/divorcio/reporte', [ReporteController::class,'generateDivorcio'])->middleware('auth.admin')->name('reporte.generateDivorcio');
+Route::post('/divorcio/reporte', [ReporteController::class,'exportDivorcio'])->middleware('auth.admin')->name('reporte.exportDivorcio');
+
+Route::get('/expediente/reporte', [ReporteController::class,'generateExpediente'])->middleware('auth.admin')->name('reporte.generateExpediente');
+Route::post('/expediente/reporte', [ReporteController::class,'exportExpediente'])->middleware('auth.admin')->name('reporte.exportExpediente');
+
+Route::get('/apelacion/reporte', [ReporteController::class,'generateApelacion'])->middleware('auth.admin')->name('reporte.generateApelacion');
+Route::post('/apelacion/reporte', [ReporteController::class,'exportApelacion'])->middleware('auth.admin')->name('reporte.exportApelacion');
+
+Route::get('/demanda/reporte', [ReporteController::class,'generateDemanda'])->middleware('auth.admin')->name('reporte.generateDemanda');
+Route::post('/demanda/reporte', [ReporteController::class,'exportDemanda'])->middleware('auth.admin')->name('reporte.exportDemanda');
+
+/*///////// Rutas de las vistas/////*/
+Route::get('/admin/registrarVista',[VistaController::class,'ListarV'])->middleware('auth.admin')->name('admin.listarvista');
+Route::get('/admin/registrarVista/crear',[VistaController::class,'createVista'])->middleware('auth.admin')->name('admin.crearVista');
+Route::post('/admin/registrarVista/crear/create',[VistaController::class,'storedVista'])->middleware('auth.admin')->name('admin.storedVista');
+Route::get('/admin/registrarVista/editarV/{id}',[VistaController::class,'editVista'])->middleware('auth.admin')->name('admin.editVista');
+Route::post('/admin/registrarVista/editarV/{id}',[VistaController::class,'updateVista'])->middleware('auth.admin')->name('admin.updateVista');
+Route::get('/admin/registrarVista/deleteV/{id}',[VistaController::class,'destroyVista'])->middleware('auth.admin')->name('admin.destroyVista');
+
+
+/*///////// Rutas de Asistencia Familiar/////*/
+Route::get('/admin/asistenciaF',[AsistenciaController::class,'ListarA'])->middleware('auth.admin')->name('admin.listarAsistencia');
+
+Route::get('/admin/asistenciaF/crear',[AsistenciaController::class,'createAsistencia'])->middleware('auth.admin')->name('admin.crearAsistencia');
+Route::post('/admin/asistenciaF/crear',[AsistenciaController::class,'storedAsistencia'])->middleware('auth.admin')->name('admin.storedAsistencia');
+Route::get('/admin/asistenciaF/detalle/{id}',[AsistenciaController::class,'verDetalle'])->middleware('auth.admin')->name('admin.detalleAsistencia');
+
+Route::get('/admin/asistenciaF/delete/{id}',[AsistenciaController::class,'destroyAsistencia'])->middleware('auth.admin')->name('admin.destroyAsistencia');
+
+Route::get('/admin/asistenciaF/editar/{id}',[AsistenciaController::class,'editAsistencia'])->middleware('auth.admin')->name('admin.editAsistencia');
+Route::post('/admin/asistenciaF/editar/{id}',[AsistenciaController::class,'updateAsistencia'])->middleware('auth.admin')->name('admin.updateAsistencia');
+
+/*///////// Rutas de Divorcio/////*/
+Route::get('/admin/divorcio',[DivorcioController::class,'ListarD'])->middleware('auth.admin')->name('admin.listarDivorcio');
+
+Route::get('/admin/divorcio/crear',[DivorcioController::class,'createDivorcio'])->middleware('auth.admin')->name('admin.crearDivorcio');
+Route::post('/admin/divorcio/crear',[DivorcioController::class,'storedDivorcio'])->middleware('auth.admin')->name('admin.storedDivorcio');
+
+Route::get('/admin/divorcio/detalle/{id}',[DivorcioController::class,'verDetalle'])->middleware('auth.admin')->name('admin.detalleDivorcio');
+
+Route::get('/admin/divorcio/delete/{id}',[DivorcioController::class,'destroyDivorcio'])->middleware('auth.admin')->name('admin.destroyDivorcio');
+Route::get('/admin/divorcio/editar/{id}',[DivorcioController::class,'editDivorcio'])->middleware('auth.admin')->name('admin.editDivorcio');
+Route::post('/admin/divorcio/editar/{id}',[DivorcioController::class,'updateDivorcio'])->middleware('auth.admin')->name('admin.updateDivorcio');

@@ -140,6 +140,7 @@ class AdminController extends Controller{
         $bitacora = new bitacora();
         $bitacora->descripcion = 'Se editó un usuario';
         $bitacora->user_name = auth()->user()->name;
+        $bitacora->ip = '127.0.0.8';
         $bitacora->save();
         return redirect()->route('admin.registrarusuario');
 

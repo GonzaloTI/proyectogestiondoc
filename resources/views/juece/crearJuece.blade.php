@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title','Crear Personal')
+@section('title','Crear Juez')
 
 @section('content')
 <nav class="bg-blue-500 py-6">
-    <a href="{{route('admin.listarpersonal')}}" class="text-white mx-16 font-semibold border-2 border-white py-3 px-5 pt-1 h-10 rounded-md hover:bg-white hover:text-blue-700">Atras</a>
+    <a href="{{route('admin.listarjuece')}}" class="text-white mx-16 font-semibold border-2 border-white py-3 px-5 pt-1 h-10 rounded-md hover:bg-white hover:text-blue-700">Atras</a>
 </nav>
 
 <div class="block mx-auto my-12 p-8 bg-white w-1/3 borderr border-gray-200 rounded-lg shadow-lg">

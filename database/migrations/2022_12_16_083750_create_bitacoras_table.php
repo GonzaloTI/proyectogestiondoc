@@ -17,6 +17,7 @@ class CreateBitacorasTable extends Migration
             $table->id();
             $table->string('descripcion',120);
             $table->string('user_name',90);
+            $table->string('ip',40)->nullable();
             $table->timestamps();
         });
     }

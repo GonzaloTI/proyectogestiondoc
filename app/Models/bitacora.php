@@ -13,7 +13,8 @@ class bitacora extends Model
         
    
         'descripcion',
-        'user_name'
+        'user_name',
+        'ip'
      
     
     ];

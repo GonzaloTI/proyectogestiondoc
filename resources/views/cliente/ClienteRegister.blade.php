@@ -1,10 +1,7 @@
-@extends('layouts.app')
-
 
 
 
 <!-- AQUI INICIA LAS OPCIONES SUPERIORES   #####################################################################################-->
-
 
 <!-- #AQUI INICIA EL DACHSBOARDDDDDD######################################################################################### -->
 
@@ -32,10 +29,12 @@
 
            <!-- Custom styles for this page -->
         <link href="{{asset('bsadmin/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+        <!-- Tailwind CSS Link -->
+        <link rel="stylesheet" 
+            href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.1/tailwind.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://kit.fontawesome.com/a23e6feb03.js"></script>
 
-
-
-    
     </head>
     
     <body id="page-top">
@@ -315,7 +314,7 @@
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
       <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-      <a href="{{ route('admin.pdfclientes')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+      <a href="{{ route('reporte.generateCliente')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
               class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
   </div>
 
