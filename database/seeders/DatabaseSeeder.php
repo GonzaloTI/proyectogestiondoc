@@ -35,23 +35,32 @@ class DatabaseSeeder extends Seeder
         $user->role = 'admin';
         $user->save();
 
-      
 
         $user = new User;
-        $user->name = 'mamani';
+        $user->name = 'abogado1';
         $user->carnet = '456546';
-        $user->email =  'user2@gmail.com';
+        $user->email =  'abogado1@gmail.com';
+        $user->password = '1234';
+        $user->role = 'abogado';
+        $user->save();
+
+
+        $user = new User;
+        $user->name = 'abogado2';
+        $user->carnet = '456546';
+        $user->email =  'abogado2@gmail.com';
         $user->password = '1234';
         $user->role = 'abogado';
         $user->save();
 
         $user = new User;
-        $user->name = 'mamani';
+        $user->name = 'juez1';
         $user->carnet = '53452324';
-        $user->email =  'user3@gmail.com';
+        $user->email =  'juez1@gmail.com';
         $user->password = '1234';
         $user->role = 'juez';
         $user->save();
+    
 
 
         $rols = new rol;
@@ -128,6 +137,7 @@ class DatabaseSeeder extends Seeder
         $user->telefono = '54136452';
         $user->direccion = 'av. brasil 2';
         $user->estado = 'h';
+        $user->user_id = '4';
         $user->save();
 
         $user = new abogado;
@@ -139,6 +149,7 @@ class DatabaseSeeder extends Seeder
         $user->telefono = '43656435';
         $user->direccion = 'av. 2 julio ';
         $user->estado = 'h';
+        $user->user_id = '2';
         $user->save();
 
         $user = new abogado;
@@ -150,6 +161,7 @@ class DatabaseSeeder extends Seeder
         $user->telefono = '75643';
         $user->direccion = 'av.los pinos';
         $user->estado = 'h';
+        $user->user_id = '3';
         $user->save();
 
     }

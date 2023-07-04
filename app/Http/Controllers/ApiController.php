@@ -349,7 +349,7 @@ public function updateCliente(Request $request, $id){
  
   $user->save();
   $bitacora = new bitacora();
-    $bitacora->descripcion = 'Se edito un cliente Mediante APP movil ' + $user->nombre;
+    $bitacora->descripcion = 'Se edito un cliente Mediante APP movil ';
     $bitacora->user_name = 'app movil';
     $bitacora->ip = '127.0.0.8';
     $bitacora->save();
