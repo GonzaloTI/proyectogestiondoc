@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Models\apelacion;
-use App\Models\cliente;
+use App\Models\vista;
 use App\Models\demanda;
 use App\Models\juece;
 use App\Models\User;
@@ -301,7 +301,7 @@ public function destroyJuece($id){
 
  /*Manda TODOS LOS CLIENTES */
  public function Clientesall(){
-  $user = cliente::all();
+  $user = vista::all();
   return response([ 
     'cliente'=>$user
 ],200);
@@ -319,14 +319,14 @@ public function destroyJuece($id){
     'direccion'=>'required']);
 
 
-$user = cliente::create(request(['ci','nombre','a_paterno','a_materno','sexo','telefono','direccion']));
+$user = vista::create(request(['ci','nombre','a_paterno','a_materno','sexo','telefono','direccion']));
 $user->estado='h';
 
 
 $user->save();
 
     $bitacora = new bitacora();
-    $bitacora->descripcion = 'Se creo un juez Mediante APP movil';
+    $bitacora->descripcion = 'Se creo un cliente Mediante APP movil';
     $bitacora->user_name = 'app movil';
     $bitacora->ip = '127.0.0.8';
     $bitacora->save();
@@ -337,7 +337,7 @@ $user->save();
 
 
 public function updateCliente(Request $request, $id){
-  $user = cliente::find($id);
+  $user = vista::find($id);
   $user->ci = $request->ci;
   $user->nombre = $request->nombre;
   $user->a_paterno = $request->a_paterno;
@@ -349,7 +349,7 @@ public function updateCliente(Request $request, $id){
  
   $user->save();
   $bitacora = new bitacora();
-    $bitacora->descripcion = 'Se edito un usuario Mediante APP movil ' + $user->nombre;
+    $bitacora->descripcion = 'Se edito un cliente Mediante APP movil ' + $user->nombre;
     $bitacora->user_name = 'app movil';
     $bitacora->ip = '127.0.0.8';
     $bitacora->save();
@@ -362,7 +362,7 @@ public function updateCliente(Request $request, $id){
 
 //destroy juece
 public function destroyCliente($id){
-  $user = cliente::find($id);
+  $user = vista::find($id);
 
   $user->delete();
 
