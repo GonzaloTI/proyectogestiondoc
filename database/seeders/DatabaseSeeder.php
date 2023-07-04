@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\abogado;
 use App\Models\almacen;
 use App\Models\cliente;
 use App\Models\factura;
@@ -10,11 +11,12 @@ use Illuminate\Database\Seeder;
 
 use App\Models\proveedor;
 use App\Models\compra;
+use App\Models\juece;
 use App\Models\User;
 use App\Models\rol;
 use App\Models\suministro;
 use App\Models\venta;
-
+use App\Models\vista;
 
 class DatabaseSeeder extends Seeder
 {
@@ -83,6 +85,70 @@ class DatabaseSeeder extends Seeder
         $user->sexo= 'm';
         $user->telefono = '12345678';
         $user->direccion = 'av. brasil 2';
+        $user->estado = 'h';
+        $user->save();
+
+        $user = new vista;
+        $user->ci = '99000';
+        $user->nombre = 'saturnino';
+        $user->a_paterno =  'mamani';
+        $user->a_materno= 'mamani';
+        $user->sexo= 'm';
+        $user->telefono = '1234578';
+        $user->direccion = 'av. bush nro 34';
+        $user->estado = 'h';
+        $user->save();
+        $user = new vista;
+        $user->ci = '44000';
+        $user->nombre = 'ana maria';
+        $user->a_paterno =  'torrez';
+        $user->a_materno= 'mamani';
+        $user->sexo= 'f';
+        $user->telefono = '12345678';
+        $user->direccion = 'av.santos dumont nro 364';
+        $user->estado = 'h';
+        $user->save();
+        $user = new vista;
+        $user->ci = '77000';
+        $user->nombre = 'joaquin';
+        $user->a_paterno =  'chumacero';
+        $user->a_materno= 'yupanqui';
+        $user->sexo= 'm';
+        $user->telefono = '5324132';
+        $user->direccion = 'av. banzer nro 34';
+        $user->estado = 'h';
+        $user->save();
+
+        $user = new juece;
+        $user->ci = '88000';
+        $user->nombre = 'pedro';
+        $user->a_paterno =  'paredez';
+        $user->a_materno= 'cruz';
+        $user->sexo= 'm';
+        $user->telefono = '54136452';
+        $user->direccion = 'av. brasil 2';
+        $user->estado = 'h';
+        $user->save();
+
+        $user = new abogado;
+        $user->ci = '3300111';
+        $user->nombre = 'roberto';
+        $user->a_paterno =  'dominguez';
+        $user->a_materno= 'paz';
+        $user->sexo= 'm';
+        $user->telefono = '43656435';
+        $user->direccion = 'av. 2 julio ';
+        $user->estado = 'h';
+        $user->save();
+
+        $user = new abogado;
+        $user->ci = '2200555';
+        $user->nombre = 'pablo';
+        $user->a_paterno =  'cortez';
+        $user->a_materno= 'vallejos';
+        $user->sexo= 'm';
+        $user->telefono = '75643';
+        $user->direccion = 'av.los pinos';
         $user->estado = 'h';
         $user->save();
 
