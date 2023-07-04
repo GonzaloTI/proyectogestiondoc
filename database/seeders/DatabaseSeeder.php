@@ -47,7 +47,7 @@ class DatabaseSeeder extends Seeder
 
         $user = new User;
         $user->name = 'abogado2';
-        $user->carnet = '456546';
+        $user->carnet = '4565654';
         $user->email =  'abogado2@gmail.com';
         $user->password = '1234';
         $user->role = 'abogado';
