@@ -147,8 +147,16 @@ class DivorcioController extends Controller
     public function search(Request $request)
     {
         $search = $request->input('search');
-        $results = caso::where('numero', $search)->get();
-        return view('divorcio.verDetalle', compact('user'));
+        $results = caso::where('numero', $search)->first();
+        if($results){
+            if($results->tipo == 'Divorcio'){
+                return redirect()->route('admin.detalleDivorcio', $results->id);
+            }
+            else{
+                return redirect()->route('admin.detalleAsistencia', $results->id);
+            }
+        }
+
     }
 
 
