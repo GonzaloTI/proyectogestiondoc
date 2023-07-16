@@ -24,6 +24,7 @@ use App\Http\Controllers\DemandaController;
 use App\Http\Controllers\VistaController;
 use App\Http\Controllers\AsistenciaController;
 use App\Http\Controllers\DivorcioController;
+use App\Http\Controllers\SentenciaController;
 
 
 Route::get('/', function () {
@@ -171,6 +172,7 @@ Route::get('/admin/documento/editar/{id}',[DocumentoController::class,'editDocum
 Route::post('/admin/documento/editar/{id}',[DocumentoController::class,'updateDocumento'])->middleware('auth.admin')->name('documento.update');
 
 Route::get('/admin/documento/{filename}',[DocumentoController::class,'showDocumento'])->middleware('auth.admin')->name('documento.show');
+Route::get('/admin/documento/caso/{id}',[DocumentoController::class,'caso'])->middleware('auth.admin')->name('documento.caso');
 
 
 /* Rutas de expediente */
@@ -185,6 +187,8 @@ Route::get('/admin/expediente/editar/{id}',[ExpedienteController::class,'editExp
 Route::post('/admin/expediente/editar/{id}',[ExpedienteController::class,'updateExpediente'])->middleware('auth.admin')->name('expediente.update');
 
 Route::get('/admin/expediente/{filename}',[ExpedienteController::class,'showExpediente'])->middleware('auth.admin')->name('expediente.show');
+Route::get('/admin/expediente/caso/{id}',[ExpedienteController::class,'caso'])->middleware('auth.admin')->name('expediente.caso');
+
 
 /* Rutas de apelacion */
 Route::get('/admin/apelacion',[ApelacionController::class,'index'])->middleware('auth.admin')->name('apelacion.index');
@@ -198,6 +202,7 @@ Route::get('/admin/apelacion/editar/{id}',[ApelacionController::class,'editApela
 Route::post('/admin/apelacion/editar/{id}',[ApelacionController::class,'updateApelacion'])->middleware('auth.admin')->name('apelacion.update');
 
 Route::get('/admin/apelacion/{filename}',[ApelacionController::class,'showApelacion'])->middleware('auth.admin')->name('apelacion.show');
+Route::get('/admin/apelacion/caso/{id}',[ApelacionController::class,'caso'])->middleware('auth.admin')->name('apelacion.caso');
 
 /* Rutas de demanda */
 Route::get('/admin/demanda',[DemandaController::class,'index'])->middleware('auth.admin')->name('demanda.index');
@@ -211,6 +216,19 @@ Route::get('/admin/demanda/editar/{id}',[DemandaController::class,'editDemanda']
 Route::post('/admin/demanda/editar/{id}',[DemandaController::class,'updateDemanda'])->middleware('auth.admin')->name('demanda.update');
 
 Route::get('/admin/demanda/{filename}',[DemandaController::class,'showDemanda'])->middleware('auth.admin')->name('demanda.show');
+Route::get('/admin/demanda/caso/{id}',[DemandaController::class,'caso'])->middleware('auth.admin')->name('demanda.caso');
+
+/* Rutas de sentencia */
+
+Route::get('/admin/sentencia',[SentenciaController::class,'index'])->middleware('auth.admin')->name('sentencia.index');
+Route::get('/admin/sentencia/crear',[SentenciaController::class,'crearSentencia'])->middleware('auth.admin')->name('sentencia.crear');
+Route::post('/admin/sentencia/crear',[SentenciaController::class,'storedSentencia'])->middleware('auth.admin')->name('sentencia.store');
+Route::get('/admin/sentencia/delete/{id}',[SentenciaController::class,'destroySentencia'])->middleware('auth.admin')->name('sentencia.destroy');
+Route::get('/admin/sentencia/editar/{id}',[SentenciaController::class,'editSentencia'])->middleware('auth.admin')->name('sentencia.edit');
+Route::post('/admin/sentencia/editar/{id}',[SentenciaController::class,'updateSentencia'])->middleware('auth.admin')->name('sentencia.update');
+Route::get('/admin/sentencia/{filename}',[SentenciaController::class,'showSentencia'])->middleware('auth.admin')->name('sentencia.show');
+Route::get('/admin/sentencia/caso/{id}',[SentenciaController::class,'caso'])->middleware('auth.admin')->name('sentencia.caso');
+
 
 /* Rutas de Reporte */
 // Report Generation
@@ -273,3 +291,5 @@ Route::get('/admin/divorcio/detalle/{id}',[DivorcioController::class,'verDetalle
 Route::get('/admin/divorcio/delete/{id}',[DivorcioController::class,'destroyDivorcio'])->middleware('auth.admin')->name('admin.destroyDivorcio');
 Route::get('/admin/divorcio/editar/{id}',[DivorcioController::class,'editDivorcio'])->middleware('auth.admin')->name('admin.editDivorcio');
 Route::post('/admin/divorcio/editar/{id}',[DivorcioController::class,'updateDivorcio'])->middleware('auth.admin')->name('admin.updateDivorcio');
+
+Route::get('/search',[DivorcioController::class,'search'])->name('search');

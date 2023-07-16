@@ -15,6 +15,12 @@ class ExpedienteController extends Controller
         return view('expediente.ExpedienteRegister', compact('user'));
     }
 
+    public function caso($id)
+    {
+        $user = expediente::where('caso_id',$id)->get();
+        return view('expediente.ExpedienteRegister', compact('user'));
+    }
+
     public function crearExpediente()
     {
         return view('expediente.crearExpediente');
@@ -23,7 +29,7 @@ class ExpedienteController extends Controller
     public function storedExpediente(Request $request)
     {
         $request->validate([
-            'asunto' => 'required',
+            'titulo' => 'required',
             'caso_id' => 'required',
             'file' => 'required|mimes:pdf,doc,docx|max:2048',
         ]);
@@ -34,7 +40,7 @@ class ExpedienteController extends Controller
             $filePath = $file->storeAs('', $filename,'expedients');
 
             expediente::create([
-                'asunto' => $request->asunto,
+                'titulo' => $request->titulo,
                 'caso_id' => $request->caso_id,
                 'file_path' => $filePath,
             ]);
@@ -72,7 +78,7 @@ class ExpedienteController extends Controller
         } 
 
         $bitacora = new bitacora();
-        $bitacora->descripcion = 'Se eliminó el expediente: ' . $user->asunto;
+        $bitacora->descripcion = 'Se eliminó el expediente: ' . $user->titulo;
         $bitacora->user_name = auth()->user()->name;
         $bitacora->ip = $request->ip();
         $bitacora->save();
@@ -92,7 +98,7 @@ class ExpedienteController extends Controller
     public function updateExpediente(Request $request, $id){
        
         $user = expediente::find($id);
-        $user->asunto = $request->asunto;
+        $user->titulo = $request->titulo;
         $user->caso_id = $request->caso_id;
 
         if ($request->hasFile('file') && $request->file('file')->isValid()) {

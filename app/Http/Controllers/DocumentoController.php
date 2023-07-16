@@ -24,6 +24,11 @@ class DocumentoController extends Controller
         return view('documento.DocumentoRegister', compact('user'));
     }
 
+    public function caso($id)
+    {
+        $user = documento::where('caso_id',$id)->get();
+        return view('documento.DocumentoRegister', compact('user'));
+    }
 
     public function crearDocumento()
     {

@@ -77,7 +77,7 @@
                         <span class="icon text-white-50">
                             <i class="fas fa-user"></i>
                         </span>
-                        <span class="text">Ver Partes</span>
+                        <span class="text">Ver Detalle</span>
                     </a>
 
                     <a href="{{ route('admin.destroyDivorcio', $row->id )}}" class="btn btn-danger btn-icon-split">

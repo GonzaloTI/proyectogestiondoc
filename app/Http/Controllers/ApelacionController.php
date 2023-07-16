@@ -15,6 +15,12 @@ class ApelacionController extends Controller
         return view('apelacion.ApelacionRegister', compact('user'));
     }
 
+    public function caso($id)
+    {
+        $user = apelacion::where('caso_id',$id)->get();
+        return view('apelacion.ApelacionRegister', compact('user'));
+    }
+
     public function crearApelacion()
     {
         return view('apelacion.crearApelacion');
@@ -23,7 +29,7 @@ class ApelacionController extends Controller
     public function storedApelacion(Request $request)
     {
         $request->validate([
-            'motivo' => 'required',
+            'titulo' => 'required',
             'caso_id' => 'required',
             'file' => 'required|mimes:pdf,doc,docx|max:2048',
         ]);
@@ -34,7 +40,7 @@ class ApelacionController extends Controller
             $filePath = $file->storeAs('', $filename,'apelacions');
 
             apelacion::create([
-                'motivo' => $request->motivo,
+                'titulo' => $request->titulo,
                 'caso_id' => $request->caso_id,
                 'file_path' => $filePath,
             ]);
@@ -72,7 +78,7 @@ class ApelacionController extends Controller
         } 
 
         $bitacora = new bitacora();
-        $bitacora->descripcion = 'Se eliminó la apelación: ' . $user->motivo;
+        $bitacora->descripcion = 'Se eliminó la apelación: ' . $user->titulo;
         $bitacora->user_name = auth()->user()->name;
         $bitacora->ip = $request->ip();
         $bitacora->save();
@@ -92,7 +98,7 @@ class ApelacionController extends Controller
     public function updateApelacion(Request $request, $id){
        
         $user = apelacion::find($id);
-        $user->motivo = $request->motivo;
+        $user->titulo = $request->titulo;
         $user->caso_id = $request->caso_id;
 
         if ($request->hasFile('file') && $request->file('file')->isValid()) {
