@@ -77,6 +77,7 @@
                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
                            <div class="bg-white py-2 collapse-inner rounded">
                                <h6 class="collapse-header">Custom Components:</h6>
+                               @if (Auth::user()->is_admin)
                                <a class="collapse-item" href="{{route('admin.registrarusuario')}}"> Usuarios</a>                              
                                <a class="collapse-item" href="{{route('admin.roles')}}">Roles</a>
                                <a class="collapse-item" href="{{route('admin.listarpersonal')}}">Personal</a>
@@ -85,7 +86,10 @@
                                 <a class="collapse-item" href="{{route('admin.listarcliente')}}"> Clientes</a> 
                                 <a class="collapse-item" href="{{route('admin.listarvista')}}"> Demandantes/Demandados</a> 
                                 <a class="collapse-item" href="{{route('admin.listarbitacora')}}">Bitacora</a>
-                           </div>
+                                @else
+                                <a class="collapse-item" href="{{route('admin.listarcliente')}}"> Clientes</a> 
+                                @endif
+                            </div>
                        </div>
                    </li>
 
@@ -109,6 +113,7 @@
                                     <a class="collapse-item" href="{{route('expediente.index')}}">Expediente</a>
                                     <a class="collapse-item" href="{{route('apelacion.index')}}">Apelación</a>
                                     <a class="collapse-item" href="{{route('demanda.index')}}">Demanda</a>
+                                    <a class="collapse-item" href="{{route('sentencia.index')}}">Sentencias</a>
                                 </div>
                             </div>
                         </li>
@@ -169,10 +174,9 @@
                         </button>
     
                         <!-- Topbar Search -->
-                        <form
-                            class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="GET" action="{{ route('search') }}">
                             <div class="input-group">
-                                <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                                <input type="text" class="form-control bg-light border-0 small" placeholder="Search by Case Number"
                                     aria-label="Search" aria-describedby="basic-addon2">
                                 <div class="input-group-append">
                                     <button class="btn btn-primary" type="button">

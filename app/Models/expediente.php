@@ -9,7 +9,7 @@ class expediente extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'asunto',
+        'titulo',
         'caso_id',
         'file_path',
         

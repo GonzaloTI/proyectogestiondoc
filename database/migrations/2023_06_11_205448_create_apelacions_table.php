@@ -15,7 +15,7 @@ class CreateApelacionsTable extends Migration
     {
         Schema::create('apelacions', function (Blueprint $table) {
             $table->id();
-            $table->string('motivo',80);
+            $table->string('titulo',80);
             $table->string('file_path',70);
             $table->integer('caso_id');
             $table->timestamps();

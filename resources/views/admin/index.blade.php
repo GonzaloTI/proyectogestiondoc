@@ -109,6 +109,7 @@
                                     <a class="collapse-item" href="{{route('expediente.index')}}">Expediente</a>
                                     <a class="collapse-item" href="{{route('apelacion.index')}}">Apelación</a>
                                     <a class="collapse-item" href="{{route('demanda.index')}}">Demanda</a>
+                                    <a class="collapse-item" href="{{route('sentencia.index')}}">Sentencia</a>
                                 </div>
                             </div>
                         </li>

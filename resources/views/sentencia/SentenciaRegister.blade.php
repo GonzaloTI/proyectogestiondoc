@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Lista de Expedientes')
+@section('title','Lista de Sentencias')
 @section('content')
 
 
@@ -8,7 +8,7 @@
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
       <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-      <a href="{{ route('reporte.generateExpediente')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+      <a href=" " class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
               class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
   </div>
 
@@ -23,17 +23,15 @@
 
           <!-- #############################################################3######-->
 
-          <a href="{{route('expediente.crear')}}" class="btn btn-primary">Crear</a>
+          <a href="{{route('sentencia.crear')}}" class="btn btn-primary">Crear</a>
 
-  <h1 class="text-3xl text-center font-bold">Lista de Expedientes</h1>
+  <h1 class="text-3xl text-center font-bold">Lista de Sentencias</h1>
 
 
   <!-- #############################################################3######-->
 
 
   <div class="container-fluid">
-
-
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -78,12 +76,12 @@
                 <td class="p-3 text-center">{{$row->caso_id}}</td>
                 <td class="p-3 text-center">{{$row->created_at}}</td>
                 <td class="p-3 text-center">
-                    <a href="{{ route('expediente.show', $row->file_path )}}" target="_blank">Ver Expediente</a>
+                    <a href="{{ route('sentencia.show', $row->file_path )}}" target="_blank">Ver Sentencia</a>
                 </td>
 
                 <td class="p-3">
 
-                    <a href="{{ route('expediente.destroy', $row->id )}}" class="btn btn-danger btn-icon-split">
+                    <a href="{{ route('sentencia.destroy', $row->id )}}" class="btn btn-danger btn-icon-split">
                         <span class="icon text-white-50">
                             <i class="fas fa-trash"></i>
                         </span>
@@ -91,7 +89,7 @@
                     </a>
 
 
-                    <a href="{{ route('expediente.edit', $row->id )}}"  class="btn btn-success btn-icon-split">
+                    <a href="{{ route('sentencia.edit', $row->id )}}"  class="btn btn-success btn-icon-split">
                         <span class="icon text-white-50">
                             <i class="fas fa-check"></i>
                         </span>
