@@ -128,4 +128,36 @@ class DivorcioController extends Controller
         return redirect()->route('admin.listarDivorcio');
     }
 
+    public function show($id)
+    {
+        $divorceCase = caso::find($id);
+        $detalle = detallecaso::where("caso_id", "=", $id)->get();
+        
+        $data = [
+            'caseNumber' => $divorceCase->caseNumber,
+            'parties' => $detalle,
+            'caseStatus' => $divorceCase->estado,
+            'caseDescription' => $divorceCase->caseDescription,
+            'timeline' => $divorceCase->timeline,
+        ];
+        // Render the view with the provided data
+        return view('divorce-case', $data);
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        $results = caso::where('numero', $search)->first();
+        if($results){
+            if($results->tipo == 'Divorcio'){
+                return redirect()->route('admin.detalleDivorcio', $results->id);
+            }
+            else{
+                return redirect()->route('admin.detalleAsistencia', $results->id);
+            }
+        }
+
+    }
+
+
 }

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Lista de Casos de Asistencia Familiar')
+@section('title','Lista de Sentencias')
 @section('content')
 
 
@@ -8,19 +8,32 @@
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
       <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-      <a href="{{ route('reporte.generateAsistencia')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+      <a href=" " class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
               class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
   </div>
 
   <!-- Content Row -->
 
 
-    <a href="{{route('admin.crearAsistencia')}}" class="btn btn-primary">Crear</a>
-
-  <h1 class="text-3xl text-center font-bold">Lista de Casos de Asistencia Familiar</h1>
-<div class="container-fluid">
+<!-- ########################################################################################## -->
 
 
+<!--  AQUI INICIA LAS OPCIONES ANTERIORESSS        ######################################################################################### -->
+
+
+          <!-- #############################################################3######-->
+
+          <a href="{{route('sentencia.crear')}}" class="btn btn-primary">Crear</a>
+
+  <h1 class="text-3xl text-center font-bold">Lista de Sentencias</h1>
+
+
+  <!-- #############################################################3######-->
+
+
+  <div class="container-fluid">
+
+    <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Datos</h6>
@@ -32,11 +45,9 @@
                         <tr class="table-warning">
                             <th>ID</th>
                             <th>Título</th>
-                            <th>Número de caso</th>
-                            <th>Corte</th>
-                            <th>Juez ID</th>
-                            <th>Estado</th>
-                            <th>F_Registro</th>
+                            <th>ID del Caso</th>
+                            <th>F_Registro</th>                        
+                            <th>Archivo</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -47,11 +58,9 @@
                         <tr class="table-warning">
                             <th>ID</th>
                             <th>Título</th>
-                            <th>Número de caso</th>
-                            <th>Corte</th>
-                            <th>Juez ID</th>
-                            <th>Estado</th>
-                            <th>F_Registro</th>
+                            <th>ID del Caso</th>
+                            <th>F_Registro</th>                        
+                            <th>Archivo</th>
                             <th>Actions</th>
                         </tr>
                     </tfoot>
@@ -64,23 +73,15 @@
         <tr>
                 <td class="py-3 px-7">{{$row->id}}</td>
                 <td class="p-3 text-center">{{$row->titulo}}</td>
-                <td class="p-3 text-center">{{$row->numero}}</td>
-                <td class="p-3 text-center">{{$row->corte}}</td>
-                <td class="p-3 text-center">{{$row->juez_id}}</td>
-                <td class="p-3 text-center">{{$row->estado}}</td>
+                <td class="p-3 text-center">{{$row->caso_id}}</td>
                 <td class="p-3 text-center">{{$row->created_at}}</td>
-                
+                <td class="p-3 text-center">
+                    <a href="{{ route('sentencia.show', $row->file_path )}}" target="_blank">Ver Sentencia</a>
+                </td>
 
                 <td class="p-3">
 
-                    <a href="{{ route('admin.detalleAsistencia', $row->id )}}" class="btn btn-info btn-icon-split">
-                        <span class="icon text-white-50">
-                            <i class="fas fa-user"></i>
-                        </span>
-                        <span class="text">Ver Detalle</span>
-                    </a>
-
-                    <a href="{{ route('admin.destroyAsistencia', $row->id )}}" class="btn btn-danger btn-icon-split">
+                    <a href="{{ route('sentencia.destroy', $row->id )}}" class="btn btn-danger btn-icon-split">
                         <span class="icon text-white-50">
                             <i class="fas fa-trash"></i>
                         </span>
@@ -88,9 +89,9 @@
                     </a>
 
 
-                    <a href="{{ route('admin.editAsistencia', $row->id )}}"  class="btn btn-success btn-icon-split">
+                    <a href="{{ route('sentencia.edit', $row->id )}}"  class="btn btn-success btn-icon-split">
                         <span class="icon text-white-50">
-                            <i class="fas fa-pen"></i>
+                            <i class="fas fa-check"></i>
                         </span>
                         <span class="text">Editar</span>
                     </a>

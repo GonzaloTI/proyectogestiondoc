@@ -13,8 +13,8 @@
 <form action="{{route('apelacion.update',$user->id)}}" method="POST" enctype="multipart/form-data">
     @csrf
 
-    <h1 class="h3 mb-0 text-gray-800">Motivo</h1>
-    <input type="text" class="border border-gray-200 rounded-md bg-gray-200 w-full text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" placeholder="Motivo" id="motivo" name="motivo" value="{{$user->motivo}}">
+    <h1 class="h3 mb-0 text-gray-800">Título</h1>
+    <input type="text" class="border border-gray-200 rounded-md bg-gray-200 w-full text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" placeholder="Título" id="titulo" name="titulo" value="{{$user->titulo}}">
 
  
     <h1 class="h3 mb-0 text-gray-800">Id del Caso</h1>

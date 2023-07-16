@@ -26,7 +26,7 @@ class PersonalController extends Controller
 
 
     /*Guarda los datos del cliente */
-    public function storedPersonal(){
+    public function storedPersonal(Request $request){
         $this->validate(request(),['ci'=>'required',
                                                    'nombre'=>'required',
                                                    'a_paterno'=>'required',
@@ -46,6 +46,7 @@ class PersonalController extends Controller
         $bitacora = new bitacora();
         $bitacora->descripcion = 'Se agregó personal';
         $bitacora->user_name = auth()->user()->name;
+        $bitacora->ip = $request->ip;
         $bitacora->save();
 
         return redirect()->route('admin.listarpersonal');     
@@ -53,13 +54,14 @@ class PersonalController extends Controller
 
     /*////// Elimina a un cliente //// */
 
-    public function destroyPersonal($id){
+    public function destroyPersonal(Request $request,$id){
         $user = personal::find($id);
         $user->delete();
 
         $bitacora = new bitacora();
         $bitacora->descripcion = 'Se eliminó personal';
         $bitacora->user_name = auth()->user()->name;
+        $bitacora->ip = $request->ip;
         $bitacora->save();
 
         return redirect()->route('admin.listarpersonal');
@@ -90,6 +92,7 @@ class PersonalController extends Controller
         $bitacora = new bitacora();
         $bitacora->descripcion = 'Se editó los datos del personal';
         $bitacora->user_name = auth()->user()->name;
+        $bitacora->ip = $request->ip;
         $bitacora->save();
 
         return redirect()->route('admin.listarpersonal');

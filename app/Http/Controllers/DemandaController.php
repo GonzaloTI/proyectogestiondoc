@@ -16,6 +16,12 @@ class DemandaController extends Controller
         return view('demanda.DemandaRegister', compact('user'));
     }
 
+    public function caso($id)
+    {
+        $user = demanda::where('caso_id',$id)->get();
+        return view('demanda.DemandaRegister', compact('user'));
+    }
+
     public function crearDemanda()
     {
         return view('demanda.crearDemanda');

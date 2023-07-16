@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateExpedientesTable extends Migration
+class CreateSentenciasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateExpedientesTable extends Migration
      */
     public function up()
     {
-        Schema::create('expedientes', function (Blueprint $table) {
+        Schema::create('sentencias', function (Blueprint $table) {
             $table->id();
             $table->string('titulo',80);
             $table->string('file_path',70);
@@ -29,6 +29,6 @@ class CreateExpedientesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('expedientes');
+        Schema::dropIfExists('sentencias');
     }
 }

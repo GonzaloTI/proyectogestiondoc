@@ -67,8 +67,19 @@
                     </tbody>
                 </table>
             </div>
+
+            <h1 class="pb-3 font-bold">Ver documentos del caso: </h1>
+            <div class="btn-group" role="group">
+                <a href="{{route('expediente.caso', $user->first()->caso_id )}}" type="button" class="btn btn-outline-primary">Expediente</a>
+                <a href="{{route('apelacion.caso', $user->first()->caso_id )}}" type="button" class="btn btn-outline-primary">Apelación</a>
+                <a href="{{route('demanda.caso', $user->first()->caso_id )}}" type="button" class="btn btn-outline-primary">Demanda</a>
+                <a href="{{route('sentencia.caso', $user->first()->caso_id )}}" type="button" class="btn btn-outline-primary">Sentencia</a>
+                <a href="{{route('documento.caso', $user->first()->caso_id )}}" type="button" class="btn btn-outline-primary">Otros documentos</a>
+            </div>
+
         </div>
     </div>
+
 
 </div>
 <!-- /.container-fluid -->
