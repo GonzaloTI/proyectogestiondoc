@@ -273,7 +273,7 @@ Route::get('/admin/asistenciaF',[AsistenciaController::class,'ListarA'])->middle
 
 Route::get('/admin/asistenciaF/crear',[AsistenciaController::class,'createAsistencia'])->middleware('auth.admin')->name('admin.crearAsistencia');
 Route::post('/admin/asistenciaF/crear',[AsistenciaController::class,'storedAsistencia'])->middleware('auth.admin')->name('admin.storedAsistencia');
-Route::get('/admin/asistenciaF/detalle/{id}',[AsistenciaController::class,'verDetalle'])->middleware('auth.admin')->name('admin.detalleAsistencia');
+Route::get('/admin/asistenciaF/detalle/{id}',[AsistenciaController::class,'verDetalle'])->name('admin.detalleAsistencia'); // sequido la autentificacion
 
 Route::get('/admin/asistenciaF/delete/{id}',[AsistenciaController::class,'destroyAsistencia'])->middleware('auth.admin')->name('admin.destroyAsistencia');
 
@@ -286,7 +286,7 @@ Route::get('/admin/divorcio',[DivorcioController::class,'ListarD'])->middleware(
 Route::get('/admin/divorcio/crear',[DivorcioController::class,'createDivorcio'])->middleware('auth.admin')->name('admin.crearDivorcio');
 Route::post('/admin/divorcio/crear',[DivorcioController::class,'storedDivorcio'])->middleware('auth.admin')->name('admin.storedDivorcio');
 
-Route::get('/admin/divorcio/detalle/{id}',[DivorcioController::class,'verDetalle'])->middleware('auth.admin')->name('admin.detalleDivorcio');
+Route::get('/admin/divorcio/detalle/{id}',[DivorcioController::class,'verDetalle'])->name('admin.detalleDivorcio');   // sequido la autentificacion
 
 Route::get('/admin/divorcio/delete/{id}',[DivorcioController::class,'destroyDivorcio'])->middleware('auth.admin')->name('admin.destroyDivorcio');
 Route::get('/admin/divorcio/editar/{id}',[DivorcioController::class,'editDivorcio'])->middleware('auth.admin')->name('admin.editDivorcio');

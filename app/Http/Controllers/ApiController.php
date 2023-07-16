@@ -485,13 +485,13 @@ public function ListarDocumentoid($id){
 ],200);
 }
 public function ListarExpedienteid($id){
-  $user = expediente::where('caso_id', '=' , $id)->get(['id','asunto as titulo','file_path','created_at','updated_at']);
+  $user = expediente::where('caso_id', '=' , $id)->get();
   return response([ 
     'expediente'=>$user
 ],200);
 }
 public function ListarApelacionid($id){
-  $user = apelacion::where('caso_id', '=' , $id)->get(['id','motivo as titulo','file_path','created_at','updated_at']);
+  $user = apelacion::where('caso_id', '=' , $id)->get();
   return response([ 
     'apelacion'=>$user
 ],200);
@@ -505,10 +505,12 @@ public function ListarApelacionid($id){
  RUTAS PARA LOS DIVORSIOS  
 #############################################################*/
 public function ListarDApi(){
-  $user = caso::where('tipo', 'Divorcio')->get();
+  $user = caso::all();
+  //where('tipo', 'Divorcio')->get();
   /*return view('divorcio.DivorcioRegister', [
       'user' => $user
   ]);  */      
+
   //$juez= juece::where( 'id', '=',1)->first();
 
   return response([ 
