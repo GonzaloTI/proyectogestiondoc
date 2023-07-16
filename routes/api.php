@@ -89,3 +89,31 @@ Route::get('/admin/cliente/delete/{id}',[ApiController::class,'destroyCliente'])
 
 Route::get('/admin/Bitacorasall',[ApiController::class,'Bitacorasall'])->name('bitacorassall.index');
 Route::get('/admin/Documentosall',[ApiController::class,'Documentosall'])->name('Documentosall.index');
+
+//ver los archivos PDF##################################################################################
+Route::get('/admin/documentoAPI/{filename}',[ApiController::class,'showDocumentoApi'])->name('showDocumentoApi.index');
+Route::get('/admin/ExpedienteAPI/{filename}',[ApiController::class,'showExpedienteApi'])->name('showExpedienteApi.index');
+Route::get('/admin/apelacionAPI/{filename}',[ApiController::class,'showApelacionApi'])->name('showApelacionApi.index');
+Route::get('/admin/docAPI/{filename}',[ApiController::class,'showDocApi'])->name('showDocApi.index');
+//ver los archivos PDF##################################################################################
+
+
+// FUNCIONES CASOS 
+Route::get('/admin/CasosDIVList',[ApiController::class,'ListarDApi'])->name('showapiDIC.index');
+Route::get('/admin/CasosDetalleDIVList/{id}',[ApiController::class,'verDetalleDApi'])->name('verDetalleDApi.index');
+//search por numerocaso - ci
+Route::get('/admin/CasosDetalleDIVList/{id}',[ApiController::class,'verDetalleDApi'])->name('verDetalleDApi.index');
+
+Route::post('/admin/verDetalleDApiSearchNumeroCI/{id}',[ApiController::class,'verDetalleDApiSearchNumeroCI'])->name('verDetalleDApiSearchNumeroCI.index');
+
+
+// FUNCIONES demandas por el id del caso
+Route::get('/admin/Demandasidcaso/{id}',[ApiController::class,'ListarDemandasid'])->name('ListarDemandasid.index');
+ 
+// FUNCIONES documentos por el id del caso
+Route::get('/admin/Documentosidcaso/{id}',[ApiController::class,'ListarDocumentoid'])->name('ListarDocumentoid.index');
+// FUNCIONES expedientes por el id del caso
+Route::get('/admin/Expedientesidcaso/{id}',[ApiController::class,'ListarExpedienteid'])->name('ListarExpedienteid.index');
+// FUNCIONES apelaciones por el id del caso
+Route::get('/admin/Apelacionesidcaso/{id}',[ApiController::class,'ListarApelacionid'])->name('ListarApelacionid.index');
+
