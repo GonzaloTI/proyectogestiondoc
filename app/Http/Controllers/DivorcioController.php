@@ -142,6 +142,7 @@ class DivorcioController extends Controller
             'juez' => $divorceCase->juez->nombre . ' '. $divorceCase->juez->a_paterno . ' '. $divorceCase->juez->a_materno,
             'partes' => $detalle,
             'estado' => $divorceCase->estado,
+            'f_registro' => $divorceCase->created_at,
             //'timeline' => $divorceCase->timeline,
         ];
         

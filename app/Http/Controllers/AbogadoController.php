@@ -110,8 +110,7 @@ class AbogadoController extends Controller
 
 
     public function index(){
-        $user = abogado::all();
-        return view("AQUI SE PONDRAN TODAS LAS FUNCIONES DE UN ABOGADO , CREAR CLIENTES , SUBIR DOCUMENTOS", compact('user'));
+        return view('home');
         
     }
 

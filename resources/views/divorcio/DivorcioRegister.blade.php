@@ -73,7 +73,7 @@
 
                 <td class="p-3">
 
-                    <a href="{{ route('admin.detalleDivorcio', $row->id )}}" class="btn btn-info btn-icon-split">
+                    <a href="{{ route('admin.detalleCaso', $row->id )}}" class="btn btn-info btn-icon-split">
                         <span class="icon text-white-50">
                             <i class="fas fa-user"></i>
                         </span>

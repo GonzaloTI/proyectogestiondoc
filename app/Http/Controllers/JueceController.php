@@ -109,8 +109,7 @@ class JueceController extends Controller
     }
 
     public function index(){
-        $user = juece::all();
-        return view("AQUI SE PONDRAN TODAS LAS FUNCIONES DE UN JUEZ , CREAR CLIENTES , SUBIR DOCUMENTOS", compact('user'));
+        return view('home');
         
     }
 

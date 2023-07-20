@@ -16,7 +16,9 @@
                         <p><strong>Tipo:</strong> {{ $tipo }}</p>
                         <p><strong>Corte:</strong> {{ $corte }}</p>
                         <p><strong>Juez:</strong> {{ $juez }}</p>
-                        <p><strong>Estado del caso:</strong> {{ $estado }}</p>
+                        <p><strong>Fecha de registro:</strong> {{ $f_registro }}</p>
+                        <p class='my-1'><strong>Estado del caso:</strong> {{ $estado }}</p>
+                        
                         <hr>
                         <h4 class="font-bold py-2">Partes</h4>
                         @foreach($partes as $row)

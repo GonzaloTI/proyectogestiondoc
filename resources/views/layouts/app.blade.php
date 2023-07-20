@@ -42,7 +42,7 @@
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
     
                 <!-- Sidebar - Brand -->
-                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('admin.index')}}">
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('home')}}">
                     <div class="sidebar-brand-icon rotate-n-15">
                         <i class="fas fa-laugh-wink"></i>
                     </div>
@@ -77,7 +77,7 @@
                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
                            <div class="bg-white py-2 collapse-inner rounded">
                                <h6 class="collapse-header">Custom Components:</h6>
-                               @if (Auth::user()->is_admin)
+                               @if (Auth::user()->role == 'admin')
                                <a class="collapse-item" href="{{route('admin.registrarusuario')}}"> Usuarios</a>                              
                                <a class="collapse-item" href="{{route('admin.roles')}}">Roles</a>
                                <a class="collapse-item" href="{{route('admin.listarpersonal')}}">Personal</a>
