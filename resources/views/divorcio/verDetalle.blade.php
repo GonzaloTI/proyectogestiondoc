@@ -17,7 +17,7 @@
 
     <a href="{{route('admin.listarDivorcio')}}" class="btn btn-primary">Atras</a>
 
-  <h1 class="text-3xl text-center font-bold">Detalle de Caso de Divorcio</h1>
+  <h1 class="text-3xl text-center font-bold">Detalle del Caso {{$user->first()->id}}</h1>
 <div class="container-fluid">
 
 
@@ -61,7 +61,7 @@
             <td class="p-3 text-center">{{$row->abogado->nombre}}  {{$row->abogado->a_paterno}}  {{$row->abogado->a_materno}}</td>
         </tr>
 
-      @endforeach
+        @endforeach
 
           <!--################################3#######-->
                     </tbody>

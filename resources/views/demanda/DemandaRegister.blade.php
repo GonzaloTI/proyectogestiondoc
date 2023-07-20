@@ -50,7 +50,9 @@
                             <th>ID del Caso</th>
                             <th>F_Registro</th>                        
                             <th>Archivo</th>
+                            @auth
                             <th>Actions</th>
+                            @endauth
                         </tr>
                     </thead>
 
@@ -63,7 +65,9 @@
                             <th>ID del Caso</th>
                             <th>F_Registro</th>                        
                             <th>Archivo</th>
+                            @auth
                             <th>Actions</th>
+                            @endauth
                         </tr>
                     </tfoot>
                     <tbody>
@@ -80,7 +84,7 @@
                 <td class="p-3 text-center">
                     <a href="{{ route('demanda.show', $row->file_path )}}" target="_blank">Ver Demanda</a>
                 </td>
-
+                @auth
                 <td class="p-3">
 
                     <a href="{{ route('demanda.destroy', $row->id )}}" class="btn btn-danger btn-icon-split">
@@ -99,6 +103,7 @@
                     </a>
 
                   </td>
+                  @endauth
               </tr>
 
       @endforeach

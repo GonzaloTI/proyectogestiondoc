@@ -293,3 +293,4 @@ Route::get('/admin/divorcio/editar/{id}',[DivorcioController::class,'editDivorci
 Route::post('/admin/divorcio/editar/{id}',[DivorcioController::class,'updateDivorcio'])->middleware('auth.admin')->name('admin.updateDivorcio');
 
 Route::get('/search',[DivorcioController::class,'search'])->name('search');
+Route::get('/admin/caso/detalle/{id}',[DivorcioController::class,'show'])->name('admin.detalleCaso');

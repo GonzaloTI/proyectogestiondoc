@@ -22,9 +22,9 @@
 
 
           <!-- #############################################################3######-->
-
+          @auth
           <a href="{{route('sentencia.crear')}}" class="btn btn-primary">Crear</a>
-
+          @endauth
   <h1 class="text-3xl text-center font-bold">Lista de Sentencias</h1>
 
 
@@ -48,7 +48,9 @@
                             <th>ID del Caso</th>
                             <th>F_Registro</th>                        
                             <th>Archivo</th>
+                            @auth
                             <th>Actions</th>
+                            @endauth
                         </tr>
                     </thead>
 
@@ -61,7 +63,9 @@
                             <th>ID del Caso</th>
                             <th>F_Registro</th>                        
                             <th>Archivo</th>
+                            @auth
                             <th>Actions</th>
+                            @endauth
                         </tr>
                     </tfoot>
                     <tbody>
@@ -78,7 +82,7 @@
                 <td class="p-3 text-center">
                     <a href="{{ route('sentencia.show', $row->file_path )}}" target="_blank">Ver Sentencia</a>
                 </td>
-
+                @auth
                 <td class="p-3">
 
                     <a href="{{ route('sentencia.destroy', $row->id )}}" class="btn btn-danger btn-icon-split">
@@ -97,6 +101,7 @@
                     </a>
 
                   </td>
+                @endauth
               </tr>
 
       @endforeach

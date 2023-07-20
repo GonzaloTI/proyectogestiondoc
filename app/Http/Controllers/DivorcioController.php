@@ -134,30 +134,33 @@ class DivorcioController extends Controller
         $detalle = detallecaso::where("caso_id", "=", $id)->get();
         
         $data = [
-            'caseNumber' => $divorceCase->caseNumber,
-            'parties' => $detalle,
-            'caseStatus' => $divorceCase->estado,
-            'caseDescription' => $divorceCase->caseDescription,
-            'timeline' => $divorceCase->timeline,
+            'id' => $divorceCase->id,
+            'titulo' => $divorceCase->titulo,
+            'numero' => $divorceCase->numero,
+            'tipo' => $divorceCase->tipo,
+            'corte' => $divorceCase->corte,
+            'juez' => $divorceCase->juez->nombre . ' '. $divorceCase->juez->a_paterno . ' '. $divorceCase->juez->a_materno,
+            'partes' => $detalle,
+            'estado' => $divorceCase->estado,
+            //'timeline' => $divorceCase->timeline,
         ];
-        // Render the view with the provided data
-        return view('divorce-case', $data);
+        
+        return view('divorcio.detalleCaso', $data);
     }
 
     public function search(Request $request)
     {
         $search = $request->input('search');
         $results = caso::where('numero', $search)->first();
-        if($results){
+        /* if($results){
             if($results->tipo == 'Divorcio'){
                 return redirect()->route('admin.detalleDivorcio', $results->id);
             }
             else{
                 return redirect()->route('admin.detalleAsistencia', $results->id);
             }
-        }
-
+        } */
+        return redirect()->route('admin.detalleCaso', $results->id);
     }
-
 
 }

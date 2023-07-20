@@ -88,7 +88,7 @@ class AdminController extends Controller{
     }
 
     /*Guarda los datos del Usuario */
-    public function storedUsuario(){
+    public function storedUsuario(Request $request){
         $this->validate(request(),['carnet'=>'required','name'=>'required','email'=>'required|email','password'=>'required|confirmed',]);
         $user = User::create(request(['carnet','name','email','password']));
         $user->role='vendedor';
@@ -98,6 +98,7 @@ class AdminController extends Controller{
         $bitacora = new bitacora();
         $bitacora->descripcion = 'Se registró un usuario';
         $bitacora->user_name = auth()->user()->name;
+        $bitacora->ip = $request->ip;
         $bitacora->save();
 
 
@@ -106,13 +107,14 @@ class AdminController extends Controller{
     }
 
     /*////// Elimina a un Usuario //// */
-    public function destroyUsuario($id){
+    public function destroyUsuario(Request $request,$id){
         $user = User::find($id);
 
         $user->delete();
         $bitacora = new bitacora();
         $bitacora->descripcion = 'Se eliminó un usuario';
         $bitacora->user_name = auth()->user()->name;
+        $bitacora->ip = $request->ip;
         $bitacora->save();
         return redirect()->route('admin.registrarusuario');
     }
@@ -140,7 +142,7 @@ class AdminController extends Controller{
         $bitacora = new bitacora();
         $bitacora->descripcion = 'Se editó un usuario';
         $bitacora->user_name = auth()->user()->name;
-        $bitacora->ip = '127.0.0.8';
+        $bitacora->ip = $request->ip;
         $bitacora->save();
         return redirect()->route('admin.registrarusuario');
 

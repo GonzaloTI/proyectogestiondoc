@@ -18,8 +18,8 @@ class caso extends Model
         'tipo',
     ];
 
+   
     public function juez(){
-        //relacion uno a uno
-        return $this->hasOne('App\Models\juece');
+        return $this->belongsTo(juece::class);
     }
 }

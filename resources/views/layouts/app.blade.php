@@ -37,7 +37,7 @@
     
         <!-- Page Wrapper -->
         <div id="wrapper">
-    
+        
             <!-- Sidebar -->
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
     
@@ -48,7 +48,7 @@
                     </div>
                     <div class="sidebar-brand-text mx-3">  Juridico</div>
                 </a>
-    
+                @auth
                 <!-- Divider -->
                 <hr class="sidebar-divider my-0">
     
@@ -58,7 +58,7 @@
                         <i class="fas fa-fw fa-tachometer-alt"></i>
                         <span>INICIO</span></a>
                 </li>
-                @auth
+                
                    <!-- Divider -->
                    <hr class="sidebar-divider">
     
@@ -71,7 +71,7 @@
                    <li class="nav-item">
                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
                            aria-expanded="true" aria-controls="collapseOne">
-                           <i class="fas fa-fw fa-cog"></i>
+                           <i class="fas fa-user"></i>
                            <span>USUARIO</span>
                        </a>
                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
@@ -102,7 +102,7 @@
                         <li class="nav-item">
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                                 aria-expanded="true" aria-controls="collapseTwo">
-                                <i class="fas fa-fw fa-cog"></i>
+                                <i class="fa fa-file-text"></i>
                                 <span>DOCUMENTOS</span>
                             </a>
                             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -126,7 +126,7 @@
                         <li class="nav-item">
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
                                 aria-expanded="true" aria-controls="collapseThree">
-                                <i class="fas fa-fw fa-cog"></i>
+                                <i class="fa fa-suitcase"></i>
                                 <span>CASOS</span>
                             </a>
                             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
@@ -138,8 +138,6 @@
                                 </div>
                             </div>
                         </li>
-
-                @endauth
     
                 <!-- Divider -->
                 <hr class="sidebar-divider d-none d-md-block">
@@ -155,10 +153,10 @@
                     <p class="text-center mb-2"><strong> Dashboard</strong> items, components, and more!</p>
                     
                 </div>
-    
+                @endauth
             </ul>
             <!-- End of Sidebar -->
-    
+            
             <!-- Content Wrapper -->
             <div id="content-wrapper" class="d-flex flex-column">
     
@@ -176,7 +174,7 @@
                         <!-- Topbar Search -->
                         <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="GET" action="{{ route('search') }}">
                             <div class="input-group">
-                                <input type="text" class="form-control bg-light border-0 small" placeholder="Search by Case Number" name="search"
+                                <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar por Número de Caso" name="search"
                                     aria-label="Search" aria-describedby="basic-addon2">
                                 <div class="input-group-append">
                                     <button class="btn btn-primary" type="submit">
